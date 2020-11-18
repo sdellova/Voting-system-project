@@ -1,6 +1,6 @@
 package Controller;
 
-public class Candidate
+public class Candidate extends Person
 {
     
 }

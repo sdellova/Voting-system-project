@@ -1,6 +1,6 @@
 package Controller;
 
-public class Voter
+public class Voter extends Person
 {
-    
+    //attribut state
 }
