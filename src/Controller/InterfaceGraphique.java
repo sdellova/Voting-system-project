@@ -24,6 +24,9 @@ public class InterfaceGraphique extends JFrame
    private JButton button1; 
    private JButton button2;
    private JButton button3;
+  
+   private JLabel j; 
+   private int a; 
    
        public InterfaceGraphique ()
     {
@@ -39,33 +42,32 @@ public class InterfaceGraphique extends JFrame
         
         setVisible(true); // display the window 
     }
-       private void BuildPanel()
+       public void BuildPanel()
        {
            // create the label, text field and radio button
-           
+           j= new JLabel("what is your profil ?");
            button1 = new JButton("Voter");
            button2= new JButton("Candidate");
-           button3 = new JButton("Official"); 
+           button3 = new JButton("Official");
            
-           // group the radio buttons
+            radioButtonGroup = new ButtonGroup();
+            radioButtonGroup.add(button1);
+            radioButtonGroup.add(button2);
+            radioButtonGroup.add(button3);
+            
            
-           radioButtonGroup= new ButtonGroup();
-           radioButtonGroup.add(button1);
-           radioButtonGroup.add(button2);
-           radioButtonGroup.add(button3);
-           
-           // add action listeners to the radio button
+           add(j);
+          panel = new JPanel(); 
+          panel.add(button1);
+          panel.add(button2);
+          panel.add(button3);
            
            button1.addActionListener(new Choice());
            button2.addActionListener(new Choice());
            button3.addActionListener(new Choice());
            
-           // add all button 
            
-           panel = new JPanel();
-           panel.add(button1);
-           panel.add(button2);
-           panel.add(button3);
+           setVisible(true); 
            
        }
        public class Choice implements ActionListener 
@@ -73,20 +75,81 @@ public class InterfaceGraphique extends JFrame
            @Override 
            public void actionPerformed(ActionEvent e)
            {
-               if (e.getSource()== button1)
+               remove (j);
+               remove(button1 );
+               remove (button2);
+               remove (button3 );
+               remove (button1); 
+               if (button1.isSelected())
                {
-                   // voir les infos sur les candidats et vote 
+                  Q1(); 
                }
-               else  if (e.getSource()== button2)
-              {
-                  // infos sur les votes 
-              } 
-               else if (e.getSource()== button3)
+               else if (button2.isSelected())
                {
-                   // voire le nb de vote, voire le candidat qui a le plus de vote, commencer le vote, pause et fin de vote 
+                   Q2();
                }
+               else if (button3.isSelected())
+               {
+                   Q3();
+               }
+               
            }
        }
+           public void Q1()
+           {
+               j = new JLabel (" what is your candidate ?"); 
+               button1  = new JButton("Macron"); 
+               button2 = new JButton("Hollande "); 
+               button3 = new JButton ("Sarkozi"); 
+                
+         radioButtonGroup = new ButtonGroup();
+         radioButtonGroup.add(button1);
+         radioButtonGroup.add(button2);
+         radioButtonGroup.add(button3);
+         
+         
+               add(j);
+              panel = new JPanel(); 
+          panel.add(button1);
+          panel.add(button2);
+          panel.add(button3); 
+               button1.addActionListener(new ChoiceCandidate());
+               button2.addActionListener(new ChoiceCandidate());
+               button3.addActionListener(new ChoiceCandidate());
+              
+               setVisible(true); 
+           }
+           public class ChoiceCandidate implements ActionListener 
+           {
+               public void actionPerformed(ActionEvent e)
+               {
+                   remove(j); 
+                   remove(button1 );
+                   remove(button2);
+                   remove(button3 );
+                   remove(button1);
+                   if (button1.isSelected())
+                   {
+                       JOptionPane.showMessageDialog(null,"your choice is Macron");
+                   }
+                   else if (button2.isSelected())
+                   {
+                        JOptionPane.showMessageDialog(null,"your choice is Hollande");
+                   }else if (button3.isSelected())
+                   {
+                        JOptionPane.showMessageDialog(null,"your choice is Sarkozi");
+                   }
+               }
+           }
+           public void Q2()
+           {
+               
+           }
+           public void Q3()
+           {
+               
+           }
+      
      
       public static void main(String[]args )
       {
