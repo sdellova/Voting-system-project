@@ -56,9 +56,9 @@ public class InterfaceGraphique extends JFrame
            
            // add action listeners to the radio button
            
-           button1.addActionListener(new ChoiceVoter());
-           button2.addActionListener(new ChoiceCandidate());
-           button3.addActionListener(new ChoiceOfficial());
+           button1.addActionListener(new Choice());
+           button2.addActionListener(new Choice());
+           button3.addActionListener(new Choice());
            
            // add all button 
            
@@ -68,40 +68,26 @@ public class InterfaceGraphique extends JFrame
            panel.add(button3);
            
        }
-       public class ChoiceVoter implements ActionListener 
+       public class Choice implements ActionListener 
        {
            @Override 
            public void actionPerformed(ActionEvent e)
            {
                if (e.getSource()== button1)
                {
-                   
+                   // voir les infos sur les candidats et vote 
                }
-               
-           }
-       }
-       public class ChoiceCandidate implements ActionListener 
-       {
-           @Override
-           public void actionPerformed(ActionEvent e)
-           {
-               if (e.getSource()== button2 )
-               {
-                   
-               }
-           }
-       }
-       public class ChoiceOfficial implements ActionListener 
-       {
-           @Override
-           public void actionPerformed(ActionEvent e)
-           {
-              if (e.getSource()== button3)
+               else  if (e.getSource()== button2)
               {
-                  
+                  // infos sur les votes 
               } 
+               else if (e.getSource()== button3)
+               {
+                   // voire le nb de vote, voire le candidat qui a le plus de vote, commencer le vote, pause et fin de vote 
+               }
            }
        }
+     
       public static void main(String[]args )
       {
           new InterfaceGraphique(); 
