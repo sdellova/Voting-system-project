@@ -1,6 +1,11 @@
 package Controller;
 
-public class Voter extends Person
+public class Voter extends User
 {
-    //attribut state
+    private String state;
+    
+    public void castVote(String candidateName)
+    {
+        
+    }
 }

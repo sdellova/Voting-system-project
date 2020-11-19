@@ -1,6 +1,6 @@
 package Controller;
 
-public class Official extends Person
+public class Official extends User
 {
     public void addCandidate()
     {

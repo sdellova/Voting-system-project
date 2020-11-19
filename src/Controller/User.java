@@ -1,6 +1,6 @@
 package Controller;
 
-public abstract class Person
+public abstract class User
 {
     
 }

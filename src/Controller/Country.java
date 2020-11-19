@@ -5,14 +5,14 @@ import java.util.Arrays;
 
 public class Country
 {
-    ArrayList<String> states = new ArrayList<>();
-    ArrayList<Candidate> candidates = new ArrayList<>();
-    ArrayList<Voter> voters = new ArrayList<>();
-    ArrayList<Official> officials = new ArrayList<>();
+    ArrayList<String> states = new ArrayList<>(); // base de données
+    ArrayList<Candidate> candidates = new ArrayList<>(); // base de données
+    ArrayList<Voter> voters = new ArrayList<>(); // base de données
+    ArrayList<Official> officials = new ArrayList<>(); // base de données
     
     public Country()
     {
-        states.addAll(Arrays.asList("Bouches-du-Rhône", "Morbihan", "Haute-Savoie", "Ariège"));
+       
     }
 }
 
