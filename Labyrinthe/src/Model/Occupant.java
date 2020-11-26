@@ -11,26 +11,34 @@ package Model;
  * @author stanislasduval
  */
 
-public abstract class Occupant extends  Cellule {
+public abstract class Occupant
+{
 
-    protected boolean CelluleOccupé ;
+    protected Cellule Occupé ;
  // Constructeur
-    public Occupant() 
+    public Occupant(Cellule Occupé) 
     {
-        
-        CelluleOccupé = false;
-        
-        
+        this.Occupé = Occupé; 
     }
-
+    
+    static void prendreOccupant()
+    {
+    cellule.prendreOccupant ; 
+    }
     // getters 
-    @Override
-    public boolean getVisited() {
-        return CelluleOccupé;
+    
+    public Cellule getOccupant() 
+    {
+        return Occupé;
     }
     // setters
-    @Override
-    public void setVisited() {
-        CelluleOccupé= true;
+    
+    public Cellule setOccupant()
+    {
+         
+    }
+    public abstract void toString()
+    {
+        
     }
 }
