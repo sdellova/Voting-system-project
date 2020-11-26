@@ -9,7 +9,7 @@ public class Cellule
     private Occupant occupant;
     private boolean visitee;
     
-<<<<<<< HEAD
+
     public Cellule( Cellule nord, Cellule sud, Cellule est, Cellule ouest,Occupant occupant, boolean visitee )
     {
         this.nord=nord;
@@ -17,7 +17,7 @@ public class Cellule
         this.est=est;
         this.ouest= ouest;
         this.occupant = occupant ; 
-=======
+
     public Cellule()
     {
         nord = null;
@@ -25,22 +25,22 @@ public class Cellule
         est = null;
         ouest = null;
         occupant = null;
->>>>>>> d8aa6e0bfc3eb9030bd2e0edd075a000219dcd1f
+
         visitee = false;
     }
     public  estLibre()
     {
-<<<<<<< HEAD
+
         if(visitee == false)
         {
          return System.out.println("la case est libre");
         }
-=======
+
         if(occupant == null)
             return true;
         else
             return false;
->>>>>>> d8aa6e0bfc3eb9030bd2e0edd075a000219dcd1f
+
     }
    
 
