@@ -1,6 +1,6 @@
 package Model;
 
-public class Cellule
+public class Cellule  
 {
     private Cellule nord;
     private Cellule sud;
@@ -9,7 +9,7 @@ public class Cellule
     private Occupant occupant;
     private boolean visitee;
     
-    public Cellule()
+    public Cellule(  )
     {
         visitee = false;
     }
@@ -17,6 +17,9 @@ public class Cellule
     {
         
     }
+    public void setVisited(); 
+    public boolean getVisited();
+
     public prendreOccupant()
     {
         
