@@ -9,6 +9,7 @@ package Controller;
  *
  * @author Seb
  */
-public class TestLaby {
+public class TestLaby implements ActionListener
+{
     
 }
