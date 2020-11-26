@@ -25,19 +25,28 @@ public class Cellule
         else
             return false;
     }
-    public void setVisited(); 
-    public boolean getVisited();
 
-    public static void prendreOccupant(Occupant occupant)
+    public void prendreOccupant(Occupant occupant)
     {
         if(occupant != null)
         {
             this.occupant.setOccupant(occupant);
         }
+        else
+        {
+            this.occupant = occupant;
+        }
     }
     @Override
     public String toString()
     {
-        
+        if(this.estLibre())
+        {
+            return ("-");
+        }
+        else
+        {
+            return occupant.toString();
+        }
     }
 }
