@@ -35,7 +35,7 @@ public abstract class Occupant
     
     public Cellule setOccupant()
     {
-         
+         this.occupant =occupant; 
     }
     public abstract void toString()
     {
