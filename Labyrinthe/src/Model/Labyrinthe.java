@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class Labyrinthe
 {
-    private ArrayList<Cellule> cellules;
+    private ArrayList<ArrayList<Cellule>> matriceCellules;
     private Explorateur explorateur;
     private int hauteur;
     private int largeur;
