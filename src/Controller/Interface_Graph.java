@@ -4,7 +4,9 @@
  * and open the template in the editor.
  */
 package Controller;
-
+import Model.Parameter; 
+import java.sql.*;
+import Model.Connexion; 
 /**
  *
  * @author stanislasduval
@@ -14,7 +16,18 @@ public class Interface_Graph extends javax.swing.JFrame {
     /**
      * Creates new form Interface_Graph
      */
-    public Interface_Graph() {
+    
+    ResultSet resultset ; 
+    Connexion connexion; 
+     
+    String Username; 
+    String Hak; 
+    String Password; 
+    
+    
+    public Interface_Graph() 
+    {
+        connexion = new Connexion(new Parameter().Host_Connexion,new Parameter().Iphost,new Parameter().Port, new Parameter().Password_Connexion);
         initComponents();
     }
 
@@ -38,12 +51,9 @@ public class Interface_Graph extends javax.swing.JFrame {
         CaseName = new javax.swing.JTextField();
         CaseFirstName = new javax.swing.JTextField();
         CaseEmail = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
-        jRadioButtonCandidate = new javax.swing.JRadioButton();
-        jRadioButtonVoter = new javax.swing.JRadioButton();
-        jRadioButtonOfficial = new javax.swing.JRadioButton();
-        jButtonNext = new javax.swing.JButton();
         CasePassword = new javax.swing.JPasswordField();
+        jButtonLogin = new javax.swing.JButton();
+        jButtonClose = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -88,25 +98,17 @@ public class Interface_Graph extends javax.swing.JFrame {
             }
         });
 
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("Your categories : ");
-
-        jRadioButtonCandidate.setBackground(new java.awt.Color(255, 255, 255));
-        jRadioButtonCandidate.setForeground(new java.awt.Color(255, 255, 255));
-        jRadioButtonCandidate.setText("Candidate");
-
-        jRadioButtonVoter.setForeground(new java.awt.Color(255, 255, 255));
-        jRadioButtonVoter.setText("Voter");
-
-        jRadioButtonOfficial.setForeground(new java.awt.Color(255, 255, 255));
-        jRadioButtonOfficial.setText("Official");
-
-        jButtonNext.setBackground(new java.awt.Color(0, 102, 102));
-        jButtonNext.setForeground(new java.awt.Color(0, 102, 102));
-        jButtonNext.setText("Next");
-        jButtonNext.addActionListener(new java.awt.event.ActionListener() {
+        jButtonLogin.setText("Login ");
+        jButtonLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonNextActionPerformed(evt);
+                jButtonLoginActionPerformed(evt);
+            }
+        });
+
+        jButtonClose.setText("Close");
+        jButtonClose.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCloseActionPerformed(evt);
             }
         });
 
@@ -118,7 +120,8 @@ public class Interface_Graph extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(117, 117, 117)
-                        .addComponent(jLabel1))
+                        .addComponent(jLabel1)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(31, 31, 31)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -126,39 +129,27 @@ public class Interface_Graph extends javax.swing.JFrame {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel2)
                                     .addComponent(jLabel3))
-                                .addGap(67, 67, 67)
+                                .addGap(76, 76, 76)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(CaseID)
-                                    .addComponent(CaseName)))
+                                    .addComponent(CaseName)
+                                    .addComponent(CaseID)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel4)
                                     .addComponent(jLabel5)
-                                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(16, 16, 16)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(CaseFirstName)
-                                            .addComponent(CaseEmail)))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(18, 18, 18)
-                                        .addComponent(CasePassword)))))))
+                                    .addComponent(CasePassword)
+                                    .addComponent(CaseEmail)
+                                    .addComponent(CaseFirstName)))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(74, 74, 74)
+                        .addComponent(jButtonLogin)
+                        .addGap(71, 71, 71)
+                        .addComponent(jButtonClose)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButtonNext))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jRadioButtonCandidate)
-                        .addGap(30, 30, 30)
-                        .addComponent(jRadioButtonVoter)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
-                        .addComponent(jRadioButtonOfficial)))
-                .addGap(26, 26, 26))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -185,29 +176,22 @@ public class Interface_Graph extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(CasePassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
-                .addComponent(jLabel7)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jRadioButtonCandidate)
-                    .addComponent(jRadioButtonVoter)
-                    .addComponent(jRadioButtonOfficial))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
-                .addComponent(jButtonNext)
-                .addContainerGap())
+                    .addComponent(jButtonLogin)
+                    .addComponent(jButtonClose))
+                .addGap(48, 48, 48))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 296, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -225,15 +209,19 @@ public class Interface_Graph extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_CaseIDActionPerformed
 
-    private void jButtonNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNextActionPerformed
+    private void jButtonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLoginActionPerformed
         // TODO add your handling code here:
-        String caseId = CaseID.getText();
-        String caseName= CaseName.getText();
-        String caseFirstname = CaseFirstName.getText();
-        String caseEmail = CaseEmail.getText();
-        char[] casePassword = CasePassword.getPassword();
-        
-    }//GEN-LAST:event_jButtonNextActionPerformed
+         String caseId = CaseID.getText();
+         String caseName= CaseName.getText();
+         String caseFirstname = CaseFirstName.getText();
+         String caseEmail = CaseEmail.getText();
+         char[] casePassword = CasePassword.getPassword();
+    }//GEN-LAST:event_jButtonLoginActionPerformed
+
+    private void jButtonCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCloseActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_jButtonCloseActionPerformed
 
     /**
      * @param args the command line arguments
@@ -276,17 +264,14 @@ public class Interface_Graph extends javax.swing.JFrame {
     private javax.swing.JTextField CaseID;
     private javax.swing.JTextField CaseName;
     private javax.swing.JPasswordField CasePassword;
-    private javax.swing.JButton jButtonNext;
+    private javax.swing.JButton jButtonClose;
+    private javax.swing.JButton jButtonLogin;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JRadioButton jRadioButtonCandidate;
-    private javax.swing.JRadioButton jRadioButtonOfficial;
-    private javax.swing.JRadioButton jRadioButtonVoter;
     // End of variables declaration//GEN-END:variables
 }

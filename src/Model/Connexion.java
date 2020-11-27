@@ -28,6 +28,10 @@ public class Connexion
         this.Id= Id;
         
     }
+
+    public Connexion(String Host_Connexion, String Iphost, int Port, String Password_Connexion) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     // fonction pour faire la connection a la base de donnée 
     public Connexion connexion()
     {
