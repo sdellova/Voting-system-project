@@ -8,9 +8,7 @@ public class Connecting
     {
         try
         {
-            Class.forName("com.mysql.jdbc.Driver");
-            System.out.println("driver ok");
-        String url="jdbc:mysql://localhost:3306/Company?autoReconnect=true&useSSL=false";
+        String url="jdbc:mysql://localhost:3306/voting-system-project";
         String user="root";
         String pass="";
         Connection conn = DriverManager.getConnection(url, user, pass);
@@ -19,13 +17,8 @@ public class Connecting
         }
         catch (Exception ex)
         {
-            System.out.println(ex.getMessage());
+            System.out.println(ex.getMessage() + "ERRORRRRRRRRRRRRRRRRRRRRRRR");
             return null;
         }
-    }
-    public static void main(String[]args)
-    {
-        System.out.print("aaa");
-        Connection conn = connect(); 
     }
 }

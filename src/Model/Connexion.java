@@ -1,4 +1,4 @@
-package Model;
+/*package Model;
 
 import java.net.Socket;
 import java.sql.*;
@@ -216,3 +216,4 @@ public class Connexion
     }
     
 }
+*/
