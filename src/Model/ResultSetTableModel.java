@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Model;
+/*package Model;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -11,7 +11,7 @@ import javax.swing.table.AbstractTableModel;
 /**
  *
  * @author stanislasduval
- */
+ 
 public class ResultSetTableModel extends AbstractTableModel
 {
    // variables 
@@ -101,3 +101,4 @@ public class ResultSetTableModel extends AbstractTableModel
         return super.getColumnName(columnIndex); 
     }
 }
+*/
