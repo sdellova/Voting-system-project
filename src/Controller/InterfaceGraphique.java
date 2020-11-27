@@ -151,8 +151,8 @@ public class InterfaceGraphique extends JFrame
            }
       
      
-      public static void main(String[]args )
-      {
-          new InterfaceGraphique(); 
-      }        
+      //public static void main(String[]args )
+      //{
+         // new InterfaceGraphique(); 
+      //}        
 }
