@@ -49,9 +49,24 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="253" max="-2" attributes="0"/>
-                  <Component id="jLabel1" min="-2" pref="134" max="-2" attributes="0"/>
+              <Group type="102" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="253" max="-2" attributes="0"/>
+                          <Component id="jLabel1" min="-2" pref="134" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                          <Component id="ConsultVotes" min="-2" pref="154" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="ConsultValidate" min="-2" max="-2" attributes="0"/>
+                              <Component id="Exit" min="-2" pref="86" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
                   <EmptySpace pref="265" max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -61,7 +76,13 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                   <Component id="jLabel1" min="-2" pref="34" max="-2" attributes="0"/>
-                  <EmptySpace pref="382" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
+                  <Component id="ConsultVotes" min="-2" pref="32" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="ConsultValidate" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="185" max="32767" attributes="0"/>
+                  <Component id="Exit" min="-2" pref="40" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -77,6 +98,33 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Candidate"/>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="ConsultValidate">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Validate"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ConsultValidateActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="ConsultVotes">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Lucida Grande" size="14" style="0"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="consult the votes "/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="Exit">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Exit"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ExitActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
