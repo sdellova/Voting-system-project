@@ -30,10 +30,27 @@ public class Official extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         Exit = new javax.swing.JButton();
+        CASEID = new javax.swing.JTextField();
+        CASELASTNAME = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        CASEFIRSTNAME = new javax.swing.JTextField();
+        CASEEMAIL = new javax.swing.JTextField();
+        CASEPASSWORD = new javax.swing.JPasswordField();
+        jButtonADD = new javax.swing.JButton();
+        jButtonDelete = new javax.swing.JButton();
+        jButtonStartVote = new javax.swing.JButton();
+        jButtonFinishVote = new javax.swing.JButton();
+        jButtonVotingBreak = new javax.swing.JButton();
+        jButtonRESET = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(0, 102, 102));
+        jPanel1.setForeground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -43,6 +60,80 @@ public class Official extends javax.swing.JFrame {
         Exit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ExitActionPerformed(evt);
+            }
+        });
+
+        CASELASTNAME.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CASELASTNAMEActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setBackground(new java.awt.Color(0, 102, 102));
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("ID :");
+
+        jLabel3.setBackground(new java.awt.Color(0, 102, 102));
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Lastname : ");
+
+        jLabel4.setBackground(new java.awt.Color(0, 102, 102));
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Firstname :");
+
+        jLabel5.setBackground(new java.awt.Color(0, 102, 102));
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Email :");
+
+        jLabel6.setBackground(new java.awt.Color(0, 102, 102));
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Password :");
+
+        CASEFIRSTNAME.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CASEFIRSTNAMEActionPerformed(evt);
+            }
+        });
+
+        jButtonADD.setText("ADD");
+        jButtonADD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonADDActionPerformed(evt);
+            }
+        });
+
+        jButtonDelete.setText("DELETE");
+        jButtonDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonDeleteActionPerformed(evt);
+            }
+        });
+
+        jButtonStartVote.setText("Start vote");
+        jButtonStartVote.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonStartVoteActionPerformed(evt);
+            }
+        });
+
+        jButtonFinishVote.setText("Finish Vote");
+        jButtonFinishVote.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonFinishVoteActionPerformed(evt);
+            }
+        });
+
+        jButtonVotingBreak.setText("Voting Break");
+        jButtonVotingBreak.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonVotingBreakActionPerformed(evt);
+            }
+        });
+
+        jButtonRESET.setText("Reset");
+        jButtonRESET.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonRESETActionPerformed(evt);
             }
         });
 
@@ -57,15 +148,75 @@ public class Official extends javax.swing.JFrame {
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(30, 30, 30)
-                        .addComponent(Exit)))
-                .addContainerGap(276, Short.MAX_VALUE))
+                        .addComponent(Exit))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jLabel3)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel5)
+                                            .addComponent(jLabel4)
+                                            .addComponent(jLabel6))))
+                                .addGap(72, 72, 72)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(CASELASTNAME)
+                                    .addComponent(CASEID)
+                                    .addComponent(CASEFIRSTNAME)
+                                    .addComponent(CASEEMAIL)
+                                    .addComponent(CASEPASSWORD, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 105, Short.MAX_VALUE)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jButtonStartVote)
+                                    .addComponent(jButtonFinishVote)
+                                    .addComponent(jButtonVotingBreak)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(2, 2, 2)
+                                .addComponent(jButtonADD)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButtonDelete)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButtonRESET)
+                                .addGap(0, 0, Short.MAX_VALUE)))))
+                .addGap(93, 93, 93))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 339, Short.MAX_VALUE)
+                .addGap(16, 16, 16)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(CASEID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2)
+                    .addComponent(jButtonStartVote))
+                .addGap(21, 21, 21)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(CASELASTNAME, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonFinishVote))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(CASEFIRSTNAME, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonVotingBreak))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(CASEEMAIL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(CASEPASSWORD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(46, 46, 46)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonADD)
+                    .addComponent(jButtonDelete)
+                    .addComponent(jButtonRESET))
+                .addGap(70, 70, 70)
                 .addComponent(Exit)
                 .addGap(22, 22, 22))
         );
@@ -80,9 +231,7 @@ public class Official extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -92,6 +241,43 @@ public class Official extends javax.swing.JFrame {
         // TODO add your handling code here:
         System.exit(0);
     }//GEN-LAST:event_ExitActionPerformed
+
+    private void CASELASTNAMEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CASELASTNAMEActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CASELASTNAMEActionPerformed
+
+    private void CASEFIRSTNAMEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CASEFIRSTNAMEActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CASEFIRSTNAMEActionPerformed
+
+    private void jButtonADDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonADDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonADDActionPerformed
+
+    private void jButtonDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonDeleteActionPerformed
+
+    private void jButtonStartVoteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonStartVoteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonStartVoteActionPerformed
+
+    private void jButtonFinishVoteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFinishVoteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonFinishVoteActionPerformed
+
+    private void jButtonVotingBreakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVotingBreakActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonVotingBreakActionPerformed
+
+    private void jButtonRESETActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRESETActionPerformed
+        // TODO add your handling code here:
+        CASEID.setText(null);
+        CASELASTNAME.setText(null);
+        CASEFIRSTNAME.setText(null);
+        CASEEMAIL.setText(null);
+        CASEPASSWORD.setText(null);
+    }//GEN-LAST:event_jButtonRESETActionPerformed
 
     /**
      * @param args the command line arguments
@@ -129,8 +315,24 @@ public class Official extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField CASEEMAIL;
+    private javax.swing.JTextField CASEFIRSTNAME;
+    private javax.swing.JTextField CASEID;
+    private javax.swing.JTextField CASELASTNAME;
+    private javax.swing.JPasswordField CASEPASSWORD;
     private javax.swing.JButton Exit;
+    private javax.swing.JButton jButtonADD;
+    private javax.swing.JButton jButtonDelete;
+    private javax.swing.JButton jButtonFinishVote;
+    private javax.swing.JButton jButtonRESET;
+    private javax.swing.JButton jButtonStartVote;
+    private javax.swing.JButton jButtonVotingBreak;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
