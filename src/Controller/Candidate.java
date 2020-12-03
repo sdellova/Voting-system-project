@@ -1,13 +1,13 @@
 package Controller;
      
-import com.mysql.jdbc.Connection;
-import java.sql.*;
+import java.util.ArrayList;
 
 public class Candidate extends User
 {
-    public Candidate(String email, String password)
-    {
-        super(email,password); 
-    }
+    private ArrayList<Voter> votes;
     
+    public Candidate(String email, String password, String first_name, String last_name)
+    {
+        super(email,password, first_name, last_name); 
+    }
 }

@@ -1,17 +1,14 @@
 package Controller;
 
+import Model.Connecting;
+
 public class Voter extends User
 {
-    private String state;
+    private final String state;
     
-    public Voter(String State,String email, String password )
+    public Voter(String email, String password, String first_name, String last_name, String State)
     {
-        super(email,password); 
+        super(email,password, first_name, last_name); 
         this.state=State; 
     } 
-    
-    public void castVote(String candidateName)
-    {
-        
-    }
 }

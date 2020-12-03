@@ -2,14 +2,23 @@ package Controller;
 
 //import View.Interface_Graph;
 import Model.Connecting;
-import static Model.Connecting.getDBConnection;
-import java.sql.Connection;
+import Model.OfficialDAO;
+import Model.VoterDAO;
 
 public class main
 {
-   // public static void main(String args[])
-   // {
-    //    Connecting.initDB();
+    public static void main(String args[])
+   {
+        Connecting.initDB();
+        Voter lucas = new Voter("dhd@gmail", "fgsdz", "lucas", "fhdd", "arizona");
+        Candidate macron = new Candidate("ddhiz@gmail", "dezce", "manu", "macron");
+        Official off = new Official("dgyzd@gmail", "debzni", "luc", "alphan");
+        off.finishVoting();
+        VoterDAO voterDAO = new VoterDAO();
+        voterDAO.castVote(macron, lucas);
+        OfficialDAO officiel = new OfficialDAO();
+        System.out.println(officiel.getWinner());
+        Connecting.deleteDB();
        /* try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -34,5 +43,5 @@ public class main
                 new Interface_Graph().setVisible(true);
             }
         });*/
-   // } 
+   } 
 }
