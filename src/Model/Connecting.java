@@ -12,7 +12,6 @@ public class Connecting {
     public static Connection getDBConnection() {
         try {
             Connection connection = DriverManager.getConnection(url2, username, password);
-            System.out.println("Connection established");
             return connection;
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -23,7 +22,6 @@ public class Connecting {
         public static Connection getDBConnection(boolean arg) {
         try {
             Connection connection = DriverManager.getConnection(url1, username, password);
-            System.out.println("Connection established");
             return connection;
         } catch (Exception e) {
             System.out.println(e.getMessage());

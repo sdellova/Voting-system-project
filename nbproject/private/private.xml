@@ -5,9 +5,11 @@
         <group>
             <file>file:/C:/Users/Seb/Documents/ECE/S5_Java/Voting-system-project/src/Model/VoterDAO.java</file>
             <file>file:/C:/Users/Seb/Documents/ECE/S5_Java/Voting-system-project/src/Controller/main.java</file>
+            <file>file:/C:/Users/Seb/Documents/ECE/S5_Java/Voting-system-project/src/Model/CandidateDAO.java</file>
             <file>file:/C:/Users/Seb/Documents/ECE/S5_Java/Voting-system-project/src/Controller/Voter.java</file>
             <file>file:/C:/Users/Seb/Documents/ECE/S5_Java/Voting-system-project/src/Model/Connecting.java</file>
             <file>file:/C:/Users/Seb/Documents/ECE/S5_Java/Voting-system-project/src/Model/OfficialDAO.java</file>
+            <file>file:/C:/Users/Seb/Documents/ECE/S5_Java/Voting-system-project/src/Model/UserDAO.java</file>
             <file>file:/C:/Users/Seb/Documents/ECE/S5_Java/Voting-system-project/src/Controller/User.java</file>
             <file>file:/C:/Users/Seb/Documents/ECE/S5_Java/Voting-system-project/src/Controller/Official.java</file>
             <file>file:/C:/Users/Seb/Documents/ECE/S5_Java/Voting-system-project/src/Controller/Candidate.java</file>

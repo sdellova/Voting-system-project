@@ -2,12 +2,14 @@ package Controller;
 
 //import View.Interface_Graph;
 import Model.Connecting;
+import Model.UserDAO;
 
 public class main
 {
     public static void main(String args[])
    {
         Connecting.initDB();
+        System.out.println(UserDAO.userTypeByEmail("emmanel.macron@mail.com").get(0));
         Connecting.deleteDB();
        /* try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
