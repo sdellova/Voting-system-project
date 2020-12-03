@@ -7,7 +7,10 @@ import java.sql.*;
 public class VoterDAO {
 
     public void castVote(Candidate candidate, Voter voter) {
-        
+        if(voter.getHasAlreadyVoted())
+            return;
+        else
+        {
         try {
             Connection connection = Connecting.getDBConnection();
             Statement statement = connection.createStatement();
@@ -15,8 +18,10 @@ public class VoterDAO {
                     + "VALUES"
                     + "('" + candidate.getEmail() + "'" + ", '" + voter.getEmail() + "');";
             statement.execute(insertVote);
+            voter.setHasAlreadyVoted(true);
         } catch (SQLException e) {
             System.out.println(e.getMessage());
+        }
         }
     }
 }
