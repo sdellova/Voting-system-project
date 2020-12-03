@@ -12,6 +12,9 @@ import java.awt.event.WindowEvent;
 import View.Candidat;
 import View.Voter;
 import View.Official;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 
 
@@ -20,8 +23,7 @@ import View.Official;
  * @author stanislasduval
  */
 public class Interface_Graphique extends javax.swing.JFrame {
- 
-    
+
     /**
      * Creates new form Interface_Graphique
      */
@@ -80,7 +82,7 @@ public class Interface_Graphique extends javax.swing.JFrame {
 
         jLabel5.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("Email ");
+        jLabel5.setText("Email : ");
 
         jLabel6.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
@@ -257,6 +259,7 @@ public class Interface_Graphique extends javax.swing.JFrame {
               Candidat E = new Candidat();
               E.setVisible(true);
           }
+         
           // base de donnée official 
           if(Id.contains("PJ") && Firstname.contains("paul") && Lastname.contains("jean") && Email.contains("jean.paul@gmail.com") && Password.contains("jpaul") )
           {
