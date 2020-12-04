@@ -3,14 +3,19 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Seb/Documents/ECE/S5_Java/Voting-system-project/src/Model/VoterDAO.java</file>
-            <file>file:/C:/Users/Seb/Documents/ECE/S5_Java/Voting-system-project/src/Controller/main.java</file>
-            <file>file:/C:/Users/Seb/Documents/ECE/S5_Java/Voting-system-project/src/Controller/Voter.java</file>
-            <file>file:/C:/Users/Seb/Documents/ECE/S5_Java/Voting-system-project/src/Model/Connecting.java</file>
-            <file>file:/C:/Users/Seb/Documents/ECE/S5_Java/Voting-system-project/src/Model/OfficialDAO.java</file>
-            <file>file:/C:/Users/Seb/Documents/ECE/S5_Java/Voting-system-project/src/Controller/User.java</file>
-            <file>file:/C:/Users/Seb/Documents/ECE/S5_Java/Voting-system-project/src/Controller/Official.java</file>
-            <file>file:/C:/Users/Seb/Documents/ECE/S5_Java/Voting-system-project/src/Controller/Candidate.java</file>
+            <file>file:/Users/stanislasduval/NetBeansProjects/GitHub/Voting-system-project/src/Controller/Candidate.java</file>
+            <file>file:/Users/stanislasduval/NetBeansProjects/GitHub/Voting-system-project/src/View/Voter.java</file>
+            <file>file:/Users/stanislasduval/NetBeansProjects/GitHub/Voting-system-project/src/Model/OfficialDAO.java</file>
+            <file>file:/Users/stanislasduval/NetBeansProjects/GitHub/Voting-system-project/src/Controller/Voter.java</file>
+            <file>file:/Users/stanislasduval/NetBeansProjects/GitHub/Voting-system-project/src/View/Official.java</file>
+            <file>file:/Users/stanislasduval/NetBeansProjects/GitHub/Voting-system-project/src/View/ConfirmPortal.java</file>
+            <file>file:/Users/stanislasduval/NetBeansProjects/GitHub/Voting-system-project/src/View/Interface_Graphique.java</file>
+            <file>file:/Users/stanislasduval/NetBeansProjects/GitHub/Voting-system-project/src/View/Candidat.java</file>
+            <file>file:/Users/stanislasduval/NetBeansProjects/GitHub/Voting-system-project/src/Controller/Official.java</file>
+            <file>file:/Users/stanislasduval/NetBeansProjects/GitHub/Voting-system-project/src/Controller/main.java</file>
+            <file>file:/Users/stanislasduval/NetBeansProjects/GitHub/Voting-system-project/src/Controller/User.java</file>
+            <file>file:/Users/stanislasduval/NetBeansProjects/GitHub/Voting-system-project/src/Model/VoterDAO.java</file>
+            <file>file:/Users/stanislasduval/NetBeansProjects/GitHub/Voting-system-project/src/Model/Connecting.java</file>
         </group>
     </open-files>
 </project-private>
