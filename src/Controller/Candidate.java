@@ -10,9 +10,4 @@ public class Candidate extends User
     {
         super(email,password, first_name, last_name); 
     }
-        @Override
-    public String toString()
-    {
-        return "candidate";
-    }
 }

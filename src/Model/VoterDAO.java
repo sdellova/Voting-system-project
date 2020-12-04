@@ -14,9 +14,9 @@ public class VoterDAO {
         try {
             Connection connection = Connecting.getDBConnection();
             Statement statement = connection.createStatement();
-            String insertVote = "INSERT INTO voter(candidate_email)"
+            String insertVote = "INSERT INTO candidate_voter(candidate_email, voter_email)"
                     + "VALUES"
-                    + "('" + candidate.getEmail() + "');";
+                    + "('" + candidate.getEmail() + "'" + ", '" + voter.getEmail() + "');";
             statement.execute(insertVote);
             voter.setHasAlreadyVoted(true);
         } catch (SQLException e) {

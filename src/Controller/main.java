@@ -9,7 +9,11 @@ public class main
     public static void main(String args[])
    {
         Connecting.initDB();
+<<<<<<< HEAD
         //System.out.println(UserDAO.isCorrect("emmanuel.macron@mail.com", "abcdef"));
+=======
+        System.out.println(UserDAO.userTypeByEmail("emmanel.macron@mail.com").get(0));
+>>>>>>> parent of 49d5b0c... a
         Connecting.deleteDB();
        /* try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
