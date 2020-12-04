@@ -2,22 +2,14 @@ package Controller;
 
 //import View.Interface_Graph;
 import Model.Connecting;
-import Model.OfficialDAO;
-import Model.VoterDAO;
+import Model.UserDAO;
 
 public class main
 {
     public static void main(String args[])
    {
         Connecting.initDB();
-        Voter lucas = new Voter("dhd@gmail", "fgsdz", "lucas", "fhdd", "arizona");
-        Candidate macron = new Candidate("ddhiz@gmail", "dezce", "manu", "macron");
-        Official off = new Official("dgyzd@gmail", "debzni", "luc", "alphan");
-        off.finishVoting();
-        VoterDAO voterDAO = new VoterDAO();
-        voterDAO.castVote(macron, lucas);
-        OfficialDAO officiel = new OfficialDAO();
-        System.out.println(officiel.getWinner());
+        System.out.println(UserDAO.userTypeByEmail("emmanel.macron@mail.com").get(0));
         Connecting.deleteDB();
        /* try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
