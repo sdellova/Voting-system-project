@@ -5,19 +5,43 @@
  */
 package View;
 // import View.Candidat;
-import View.Voter;
+
+import Controller.User;
+import java.util.ArrayList;
+
+
 // import View.Official;
 /**
  *
  * @author stanislasduval
  */
-public class ConfirmPortal extends javax.swing.JFrame {
+public class ConfirmPortalView extends javax.swing.JFrame {
 
     /**
      * Creates new form ConfirmPortal
      */
-    public ConfirmPortal() {
+    public ConfirmPortalView(ArrayList<User> users) {
         initComponents();
+        jRadioCandidate.setVisible(false);
+        jRadioVoter.setVisible(false);
+        jRadioOfficial.setVisible(false);
+        
+        for(int i = 0; i< users.size();i++)
+        {
+            if (users.get(i).toString()== "candidat")
+               {
+                  jRadioCandidate.setVisible(true);
+               }
+               else if (users.get(i).toString()== "voter")
+                       {
+                           jRadioVoter.setVisible(true);
+                       }
+               else if (users.get(i).toString()== "official")
+                       {
+                         jRadioOfficial.setVisible(true);
+                       }
+        }
+        
     }
 
     /**
@@ -36,7 +60,7 @@ public class ConfirmPortal extends javax.swing.JFrame {
         jRadioVoter = new javax.swing.JRadioButton();
         jRadioOfficial = new javax.swing.JRadioButton();
         jButton1 = new javax.swing.JButton();
-        jButtonValdiate = new javax.swing.JButton();
+        jButtonValidate = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -80,10 +104,10 @@ public class ConfirmPortal extends javax.swing.JFrame {
             }
         });
 
-        jButtonValdiate.setText("Validate");
-        jButtonValdiate.addActionListener(new java.awt.event.ActionListener() {
+        jButtonValidate.setText("Validate");
+        jButtonValidate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonValdiateActionPerformed(evt);
+                jButtonValidateActionPerformed(evt);
             }
         });
 
@@ -112,7 +136,7 @@ public class ConfirmPortal extends javax.swing.JFrame {
                         .addComponent(jLabel1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(52, 52, 52)
-                        .addComponent(jButtonValdiate)))
+                        .addComponent(jButtonValidate)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -128,7 +152,7 @@ public class ConfirmPortal extends javax.swing.JFrame {
                     .addComponent(jRadioVoter)
                     .addComponent(jRadioOfficial))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 113, Short.MAX_VALUE)
-                .addComponent(jButtonValdiate)
+                .addComponent(jButtonValidate)
                 .addGap(92, 92, 92)
                 .addComponent(jButton1)
                 .addGap(17, 17, 17))
@@ -157,61 +181,49 @@ public class ConfirmPortal extends javax.swing.JFrame {
          System.exit(0);        
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButtonValdiateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonValdiateActionPerformed
+    private void jButtonValidateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonValidateActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonValdiateActionPerformed
+       if( jRadioCandidate.isSelected())
+       {
+       CandidatView c = new CandidatView();
+       c.setVisible(true);
+       }else if (jRadioVoter.isSelected())
+       {
+        VoterView V = new VoterView();
+        V.setVisible(true); 
+       }else if (jRadioOfficial.isSelected())
+       {
+        OfficialView O = new OfficialView();
+        O.setVisible(true);
+       }
+    }//GEN-LAST:event_jButtonValidateActionPerformed
 
     private void jRadioCandidateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioCandidateActionPerformed
         // TODO add your handling code here:
-       
+       CandidatView c = new CandidatView();
+       c.setVisible(true);
     }//GEN-LAST:event_jRadioCandidateActionPerformed
 
     private void jRadioVoterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioVoterActionPerformed
         // TODO add your handling code here:
+        VoterView V = new VoterView();
+        V.setVisible(true);
     }//GEN-LAST:event_jRadioVoterActionPerformed
 
     private void jRadioOfficialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioOfficialActionPerformed
         // TODO add your handling code here:
+        OfficialView O = new OfficialView();
+        O.setVisible(true);
     }//GEN-LAST:event_jRadioOfficialActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ConfirmPortal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ConfirmPortal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ConfirmPortal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ConfirmPortal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ConfirmPortal().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButtonValdiate;
+    private javax.swing.JButton jButtonValidate;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;

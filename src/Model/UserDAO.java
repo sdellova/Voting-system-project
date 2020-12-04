@@ -10,19 +10,19 @@ import java.util.ArrayList;
 public class UserDAO
 {
 
-    private String user_email;
-    private String user_password;
-    private String user_first_name;
-    private String user_last_name;
-    private String user_political_party;
-    private String user_state;
-    private String user_candidate_email;
+    private static  String user_email;
+    private static String user_password;
+    private static  String user_first_name;
+    private static String user_last_name;
+    private static String user_political_party;
+    private static String user_state;
+    private static String user_candidate_email;
 
     public int isCorrect(String email, String password)
     {
         return 0;
     }
-    public ArrayList<User> getUserByEmailAndPassword(String email, String password)
+    public static ArrayList<User> getUserByEmailAndPassword(String email, String password)
     {
         ArrayList<User> user = new ArrayList<>();
         try
