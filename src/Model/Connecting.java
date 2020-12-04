@@ -7,7 +7,7 @@ public class Connecting {
     private final static String url1 = "jdbc:mysql://localhost:3306/";
     private final static String url2 = url1 + DBName;
     private final static String username = "root";
-    private final static String password = "";
+    private final static String password = "root";
 
     public static Connection getDBConnection() {
         try {

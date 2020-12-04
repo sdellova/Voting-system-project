@@ -6,7 +6,7 @@
 package View;
 // import View.Candidat;
 import View.Voter;
-import View.Official;
+// import View.Official;
 /**
  *
  * @author stanislasduval
