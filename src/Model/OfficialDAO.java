@@ -11,9 +11,12 @@ public class OfficialDAO {
         try {
             Connection connection = Connecting.getDBConnection();
             Statement statement = connection.createStatement();
-            String insertCandidate = "INSERT INTO candidate(email, password, politicalparty, firstname, lastname)"
+            String insertCandidate = "INSERT INTO user(u_email, u_password, u_first_name, u_last_name)"
                     + "VALUES"
-                    + "('" + email + "', '" + password + "', '" + political_party + "', '" + first_name + "', '" + first_name + "');";
+                    + "('" + email + "', '" + password + "', '" + first_name + "', '" + last_name + "'); "
+                    + "INSERT INTO candidate(c_email, political_party)"
+                    + "VALUES"
+                    + "('" + email + "', '" + political_party + "');";
             statement.execute(insertCandidate);
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -24,8 +27,10 @@ public class OfficialDAO {
         try {
             Connection connection = Connecting.getDBConnection();
             Statement statement = connection.createStatement();
-            String deleteCandidate = "DELETE FROM candidate"
-                    + "WHERE email = " + candidate.getEmail();
+            String deleteCandidate = "DELETE FROM user"
+                    + "WHERE u_email = " + candidate.getEmail()
+                    + " DELETE FROM candidate"
+                    + "WHERE c_email = " + candidate.getEmail();
             statement.execute(deleteCandidate);
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -36,9 +41,12 @@ public class OfficialDAO {
         try {
             Connection connection = Connecting.getDBConnection();
             Statement statement = connection.createStatement();
-            String insertVoter = "INSERT INTO voter(email, password, firstname, lastname, state)"
+            String insertVoter = "INSERT INTO user(u_email, u_password, u_first_name, u_last_name)"
                     + "VALUES"
-                    + "('" + email + "', '" + password + "', '" + first_name + "', '" + last_name + "', '" + state + "');";
+                    + "('" + email + "', '" + password + "', '" + first_name + "', '" + last_name + "');"
+                    + "INSERT INTO voter(v_email, state)"
+                    + "VALUES"
+                    + "('" + email + "', '" + state + "');";
             statement.execute(insertVoter);
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -49,15 +57,17 @@ public class OfficialDAO {
         try {
             Connection connection = Connecting.getDBConnection();
             Statement statement = connection.createStatement();
-            String deleteVoter = "DELETE FROM voter"
-                    + "WHERE email = " + voter.getEmail();
+            String deleteVoter = "DELETE FROM user"
+                    + "WHERE u_email = " + voter.getEmail()
+                    + "DELETE FROM voter"
+                    + "WHERE v_email = " + voter.getEmail();
             statement.execute(deleteVoter);
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
     }
 
-    public ArrayList<Candidate> getWinner() {
+    public ArrayList<Candidate> getWinner() {//à refaire
         try {
             Connection connection = Connecting.getDBConnection();
             Statement statement = connection.createStatement();

@@ -9,7 +9,8 @@ public class main
     public static void main(String args[])
    {
         Connecting.initDB();
-        System.out.println(UserDAO.userTypeByEmail("emmanel.macron@mail.com").get(0));
+        UserDAO userDAO = new UserDAO();
+        userDAO.getUserByEmailAndPassword("emanel.macron@mail.com", "abcdef");
         Connecting.deleteDB();
        /* try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
