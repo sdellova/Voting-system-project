@@ -22,4 +22,9 @@ public class Official extends User
     {
         votingState = VotingState.CLOSED;
     }
+    @Override
+    public String toString()
+    {
+        return "official";
+    }
 }
