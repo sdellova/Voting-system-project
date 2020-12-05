@@ -326,6 +326,11 @@ public class Interface_Graphique extends javax.swing.JFrame implements ActionLis
     private javax.swing.JPanel jPanel1;
     private javax.swing.JCheckBox showPassword;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     
 }
