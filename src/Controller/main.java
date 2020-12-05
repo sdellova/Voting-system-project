@@ -1,6 +1,5 @@
 package Controller;
 
-//import View.Interface_Graph;
 import Model.Connecting;
 import Model.UserDAO;
 
@@ -9,8 +8,7 @@ public class main
     public static void main(String args[])
    {
         Connecting.initDB();
-        UserDAO userDAO = new UserDAO();
-        userDAO.getUserByEmailAndPassword("emanel.macron@mail.com", "abcdef");
+        System.out.println(UserDAO.isCorrect("emmanuel.macron@mail.com", "abcdef"));
         Connecting.deleteDB();
        /* try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
