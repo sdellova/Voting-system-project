@@ -13,22 +13,10 @@ public abstract class User
         this.password = password;
         this.first_name = first_name;
         this.last_name = last_name;
-      
     }
     public String getEmail()
     {
         return email;
     }
-    public String getPassword()
-    {
-        return password; 
-    }
-    public String getFirst_Name()
-    {
-        return first_name;
-    }
-    public String getLast_Name()
-            {
-                return last_name;
-            }
+    
 }

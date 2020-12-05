@@ -10,19 +10,47 @@ import java.util.ArrayList;
 public class UserDAO
 {
 
-    private static  String user_email;
-    private static String user_password;
-    private static  String user_first_name;
-    private static String user_last_name;
-    private static String user_political_party;
-    private static String user_state;
-    private static String user_candidate_email;
+    private String user_email;
+    private String user_password;
+    private String user_first_name;
+    private String user_last_name;
+    private String user_political_party;
+    private String user_state;
+    private String user_candidate_email;
 
-    public int isCorrect(String email, String password)
+    public static int isCorrect(String email, String password)
     {
-        return 0;
+        try
+        {
+            Connection connection = Connecting.getDBConnection();
+            Statement statement = connection.createStatement();
+            String str = "SELECT * FROM user "
+                    + "WHERE '" + email + "' = u_email";
+            ResultSet result = statement.executeQuery(str);
+            if(result.next())
+            {
+                result.close();
+                String str1 = "SELECT u_password FROM user "
+                            + "WHERE '" + email + "' = u_email";
+                ResultSet result1 = statement.executeQuery(str1);
+                if(result1.getString("u_password").equals(password))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+            else
+                return 3;
+        } catch (SQLException e)
+        {
+            System.out.println(e.getMessage());
+            return 0;
+        }
     }
-    public static ArrayList<User> getUserByEmailAndPassword(String email, String password)
+    public ArrayList<User> getUserByEmailAndPassword(String email, String password)
     {
         ArrayList<User> user = new ArrayList<>();
         try
