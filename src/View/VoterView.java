@@ -5,6 +5,11 @@
  */
 package View;
 
+import Controller.Candidate;
+import static Model.CandidateDAO.getCandidates;
+import java.util.ArrayList;
+import javax.swing.JTable;
+
 /**
  *
  * @author stanislasduval
@@ -16,6 +21,17 @@ public class VoterView extends javax.swing.JFrame {
      */
     public VoterView() {
         initComponents();
+        ArrayList<Candidate> candidates = getCandidates(); 
+        
+        Object[][] data = new Object[candidates.size() / 2][2];
+        int i = 0;
+        while (i < candidates.size()) {
+            data[i][0] = candidates.get(i);
+            data[i][1] = candidates.get(i + 1);
+            i = i + 2;
+        }
+        String title[] = {"Profile Photo","FirstName","LastName", "Political party"};
+        JTable tableau = new JTable(data, title);
     }
 
     /**
@@ -35,7 +51,6 @@ public class VoterView extends javax.swing.JFrame {
         jButtonValidate1 = new javax.swing.JButton();
         jButtonChoiceValidate = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTableCandidat = new javax.swing.JTable();
         jScrollPane1 = new javax.swing.JScrollPane();
         choicecandidate = new java.awt.Choice();
 
@@ -66,35 +81,6 @@ public class VoterView extends javax.swing.JFrame {
         jButtonValidate1.setText("Validate");
 
         jButtonChoiceValidate.setText("Validate");
-
-        jTableCandidat.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
-            },
-            new String [] {
-                "Candidat", "ID", "Email", "FirstName", "LastName", "Political Party"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane3.setViewportView(jTableCandidat);
 
         jScrollPane1.setViewportView(choicecandidate);
 
@@ -156,7 +142,7 @@ public class VoterView extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(55, Short.MAX_VALUE))
+                .addContainerGap(119, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -220,6 +206,5 @@ public class VoterView extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTable jTableCandidat;
     // End of variables declaration//GEN-END:variables
 }

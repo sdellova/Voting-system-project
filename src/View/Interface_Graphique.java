@@ -7,6 +7,7 @@ package View;
 
 import Controller.User;
 import Model.OfficialDAO;
+import Model.UserDAO;
 import static Model.UserDAO.getUserByEmailAndPassword;
 
 import java.awt.event.WindowEvent;
@@ -216,7 +217,7 @@ public class Interface_Graphique extends javax.swing.JFrame implements ActionLis
         
         
        ArrayList<User> users = getUserByEmailAndPassword(caseEmail.getText(),casePassWord.getText());
-       if(! UserDAO.isCorrect(caseEmail.getText(),casePassWord.getText()))
+       if( UserDAO.isCorrect(caseEmail.getText(),casePassWord.getText())== 3)
        {
           // creation label pour message erreur 
        }else {
