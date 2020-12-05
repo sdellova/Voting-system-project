@@ -47,19 +47,5 @@ public class CandidateDAO
         return null;
     }
 
-    public static ArrayList<Candidate> getCandidates() {
-        ArrayList<Candidate> candidates = new ArrayList<>();
-        try {
-            Connection connection = Connecting.getDBConnection();
-            Statement statement = connection.createStatement();
-            String getCandidates = "SELECT * FROM candidate ";
-            ResultSet result = statement.executeQuery(getCandidates);
-            while (result.next()) {
-                candidates.add(new Candidate(result.getString("c_email"), "", result.getString("c_political_party"), "", ""));
-            }
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
-        return null;
-    }
+    
 }
