@@ -1,14 +1,13 @@
 package Controller;
 
 import Model.Connecting;
-import Model.UserDAO;
 
 public class main
 {
     public static void main(String args[])
    {
+       
         Connecting.initDB();
-        System.out.println(UserDAO.isCorrect("emmanuel.macron@mail.com", "abcdef"));
         Connecting.deleteDB();
        /* try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {

@@ -18,5 +18,16 @@ public abstract class User
     {
         return email;
     }
-    
+    public String getPassword()
+    {
+        return password;
+    }
+    public String getFirst_name()
+    {
+        return first_name;
+    }
+    public String getLast_name()
+    {
+        return last_name;
+    }
 }

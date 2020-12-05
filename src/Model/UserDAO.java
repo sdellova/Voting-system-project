@@ -15,8 +15,8 @@ public class UserDAO
     private static String user_first_name;
     private static String user_last_name;
     private static String user_political_party;
-    private static  String user_state;
-    private static  String user_candidate_email;
+    private static String user_state;
+    private static String user_candidate_email;
 
     public static int isCorrect(String email, String password)
     {
@@ -54,11 +54,7 @@ public class UserDAO
         return 12;
     }
 
-    public static  ArrayList<User> getUserByEmailAndPassword(String email, String password)
-
-
-   
-
+    public static ArrayList<User> getUserByEmailAndPassword(String email, String password)
     {
         ArrayList<User> user = new ArrayList<>();
         try
@@ -121,45 +117,4 @@ public class UserDAO
             return null;
         }
     }
-
-    /*public static ArrayList<String> userTypeByEmail(String email, String password) {
-     try {
-     // verifier que email et mot de passe sont corrects
-     // return Candidate Voter Official
-     ArrayList<String> userType = new ArrayList<>();
-     Connection connection = Connecting.getDBConnection();
-     Statement statement = connection.createStatement();
-     String str1 = "SELECT c_email FROM candidate "
-     + "WHERE '" + email + "' = c_email";
-     String str2 = "SELECT v_email FROM voter "
-     + "WHERE '" + email + "' = v_email";
-     String str3 = "SELECT o_email FROM official "
-     + "WHERE '" + email + "' = o_email";
-     ResultSet result1 = statement.executeQuery(str1);
-     while (result1.next()) {
-     if (result1.getString(1).equals(email)) {
-     userType.add("candidate");
-     }
-     }
-     result1.close();
-     ResultSet result2 = statement.executeQuery(str2);
-     while (result2.next()) {
-     if (result2.getString(1).equals(email)) {
-     userType.add("voter");
-     }
-     }
-     result2.close();
-     ResultSet result3 = statement.executeQuery(str3);
-     while (result3.next()) {
-     if (result3.getString(1).equals(email)) {
-     userType.add("official");
-     }
-     }
-     result3.close();
-     return userType;
-     } catch (SQLException e) {
-     System.out.println(e.getMessage());
-     return null;
-     }
-     }*/
 }

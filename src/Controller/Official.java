@@ -1,7 +1,5 @@
 package Controller;
 
-import java.util.ArrayList;
-
 public class Official extends User
 {
     private enum VotingState {OPEN, PAUSED, CLOSED};
