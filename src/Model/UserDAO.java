@@ -27,30 +27,38 @@ public class UserDAO
             String str = "SELECT * FROM user "
                     + "WHERE '" + email + "' = u_email";
             ResultSet result = statement.executeQuery(str);
-            if(result.next())
+            if (result.next())
             {
-                result.close();
                 String str1 = "SELECT u_password FROM user "
-                            + "WHERE '" + email + "' = u_email";
+                        + "WHERE '" + email + "' = u_email";
                 ResultSet result1 = statement.executeQuery(str1);
-                if(result1.getString("u_password").equals(password))
+                if (result1.next())
                 {
-                    return 1;
+                    if (result1.getString("u_password").equals(password))
+                    {
+                        return 1;
+                    } else
+                    {
+                        return 2;
+                    }
                 }
-                else
-                {
-                    return 2;
-                }
-            }
-            else
+            } else
+            {
                 return 3;
+            }
         } catch (SQLException e)
         {
             System.out.println(e.getMessage());
             return 0;
         }
+        return 12;
     }
+
     public static  ArrayList<User> getUserByEmailAndPassword(String email, String password)
+
+
+   
+
     {
         ArrayList<User> user = new ArrayList<>();
         try
