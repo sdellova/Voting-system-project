@@ -217,7 +217,7 @@ public class Interface_Graphique extends javax.swing.JFrame implements ActionLis
         
         
        ArrayList<User> users = getUserByEmailAndPassword(caseEmail.getText(),casePassWord.getText());
-       if( UserDAO.isCorrect(caseEmail.getText(),casePassWord.getText())== 3)
+       if( UserDAO.isCorrect(caseEmail.getText(),casePassWord.getText())!= 1)
        {
           // creation label pour message erreur 
        }else {
