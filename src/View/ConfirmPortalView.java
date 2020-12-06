@@ -159,6 +159,7 @@ public class ConfirmPortalView extends javax.swing.JFrame
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         ConnectionPageView C = new ConnectionPageView();
         C.setVisible(true); 
+        dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButtonValidateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonValidateActionPerformed
@@ -176,6 +177,7 @@ public class ConfirmPortalView extends javax.swing.JFrame
             OfficialView O = new OfficialView();
             O.setVisible(true);
         }
+      
     }//GEN-LAST:event_jButtonValidateActionPerformed
 
 

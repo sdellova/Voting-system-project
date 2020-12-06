@@ -134,6 +134,7 @@ public class DeleteVoterView extends javax.swing.JFrame
     private void jButtonReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonReturnActionPerformed
        OfficialView O = new OfficialView();
        O.setVisible(true);
+       dispose();
     }//GEN-LAST:event_jButtonReturnActionPerformed
 
 

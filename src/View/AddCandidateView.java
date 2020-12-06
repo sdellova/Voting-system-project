@@ -159,6 +159,7 @@ public class AddCandidateView extends javax.swing.JFrame
         // TODO add your handling code here:
         OfficialView O = new OfficialView();
         O.setVisible(true);
+        dispose();
     }//GEN-LAST:event_jButtonReturnActionPerformed
 
 
