@@ -18,6 +18,6 @@ public class main
         ConnectionPageView v = new ConnectionPageView();
         v.setVisible(true);
         
-        //Connecting.deleteDB();
+        Connecting.deleteDB();
     }
 }

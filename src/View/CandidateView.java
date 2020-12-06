@@ -1,8 +1,12 @@
 package View;
 
+import Controller.Candidate;
 import Controller.User;
 import Model.CandidateDAO;
+import static Model.CandidateDAO.getCandidates;
 import Model.UserDAO;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 
 public class CandidateView extends javax.swing.JFrame
 {
@@ -12,10 +16,25 @@ public class CandidateView extends javax.swing.JFrame
     {
         this.user = user;
         initComponents();
+        addRowToJTableCandidate();
         jLabelVotesNumberReceived.setText(String.valueOf(UserDAO.getVotesNumberByCandidate(user.getEmail())));
         jPanelProfile.setVisible(false);
     }
 
+    public void addRowToJTableCandidate()
+    {
+        DefaultTableModel model = (DefaultTableModel) jTableCandidates.getModel();
+        ArrayList<Candidate> candidates = getCandidates();
+        Object rowData[] = new Object[3];
+        for (int i = 0; i < candidates.size(); i++)
+        {
+            rowData[0] = candidates.get(i).getFirst_name();
+            rowData[1] = candidates.get(i).getLast_name();
+            rowData[2] = candidates.get(i).getPolitical_party();
+            model.addRow(rowData);
+        }
+        jTableCandidates.setVisible(true);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

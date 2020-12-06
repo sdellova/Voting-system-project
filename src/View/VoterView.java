@@ -21,7 +21,7 @@ public class VoterView extends javax.swing.JFrame
 
     private User user;
 
-    public void addRowToJTable()
+    public void addRowToJTableCandidate()
     {
         DefaultTableModel model = (DefaultTableModel) jTableCandidates.getModel();
         ArrayList<Candidate> candidates = getCandidates();
@@ -45,7 +45,7 @@ public class VoterView extends javax.swing.JFrame
         this.user = user;
         initComponents();
         jPanelProfile.setVisible(false);
-        addRowToJTable();
+        addRowToJTableCandidate();
     }
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
