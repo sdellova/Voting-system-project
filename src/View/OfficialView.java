@@ -3,10 +3,12 @@ package View;
 import Controller.Candidate;
 import Controller.Official;
 import Model.CandidateDAO;
+import static Model.CandidateDAO.getCandidates;
 import Model.OfficialDAO;
 import Model.UserDAO;
 import Model.VoterDAO;
 import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 
 public class OfficialView extends javax.swing.JFrame {
 
@@ -15,10 +17,41 @@ public class OfficialView extends javax.swing.JFrame {
      */
     public OfficialView() {
         initComponents();
+        addRowToJTableCandidate();
+        addRowToJTableVoter();
         jPanelProfileCandidates.setVisible(false);
         jPanelProfileVoters.setVisible(false);
     }
 
+    public void addRowToJTableVoter()
+    {
+        DefaultTableModel model = (DefaultTableModel) jTableCandidates.getModel();
+        ArrayList<Candidate> candidates = getCandidates();
+        Object rowData[] = new Object[3];
+        for (int i = 0; i < candidates.size(); i++)
+        {
+            rowData[0] = candidates.get(i).getFirst_name();
+            rowData[1] = candidates.get(i).getLast_name();
+            rowData[2] = candidates.get(i).getPolitical_party();
+            model.addRow(rowData);
+        }
+        jTableCandidates.setVisible(true);
+    }
+    
+    public void addRowToJTableCandidate()
+    {
+        DefaultTableModel model = (DefaultTableModel) jTableCandidates.getModel();
+        ArrayList<Candidate> candidates = getCandidates();
+        Object rowData[] = new Object[3];
+        for (int i = 0; i < candidates.size(); i++)
+        {
+            rowData[0] = candidates.get(i).getFirst_name();
+            rowData[1] = candidates.get(i).getLast_name();
+            rowData[2] = candidates.get(i).getPolitical_party();
+            model.addRow(rowData);
+        }
+        jTableCandidates.setVisible(true);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
