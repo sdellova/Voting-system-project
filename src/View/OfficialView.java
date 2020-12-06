@@ -26,6 +26,7 @@ public class OfficialView extends javax.swing.JFrame {
     public void addRowToJTableVoter()
     {
         DefaultTableModel model = (DefaultTableModel) jTableCandidates.getModel();
+        model.setRowCount(0);
         ArrayList<Candidate> candidates = getCandidates();
         Object rowData[] = new Object[3];
         for (int i = 0; i < candidates.size(); i++)
@@ -41,6 +42,7 @@ public class OfficialView extends javax.swing.JFrame {
     public void addRowToJTableCandidate()
     {
         DefaultTableModel model = (DefaultTableModel) jTableCandidates.getModel();
+        model.setRowCount(0);
         ArrayList<Candidate> candidates = getCandidates();
         Object rowData[] = new Object[3];
         for (int i = 0; i < candidates.size(); i++)

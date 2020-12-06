@@ -10,11 +10,9 @@ public class main
     public static void main(String args[])
     {
         Connecting.initDB();
-        
-        UserDAO.getVotesNumberByCandidate("emmanuel.macron@mail.com");
+
+        //UserDAO.getVotesNumberByCandidate("emmanuel.macron@mail.com");
         ConnectionPageView v = new ConnectionPageView();
         v.setVisible(true);
-        
-        //Connecting.deleteDB();
     }
 }

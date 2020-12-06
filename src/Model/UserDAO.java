@@ -17,7 +17,7 @@ public class UserDAO
     private static String user_political_party;
     private static String user_state;
     private static String user_candidate_email;
-    public static Blob user_photo;
+    public static byte[] user_photo;
 
     public static int getVotesNumberByCandidate(String email)
     {

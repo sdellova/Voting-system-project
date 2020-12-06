@@ -8,9 +8,9 @@ public abstract class User
     protected String password;
     protected String first_name;
     protected String last_name;
-    protected Blob photo;
+    protected byte[] photo;
     
-    public User(String email, String password, String first_name, String last_name, Blob photo)
+    public User(String email, String password, String first_name, String last_name, byte[] photo)
     {
         this.email=email;
         this.password = password;
@@ -34,7 +34,7 @@ public abstract class User
     {
         return last_name;
     }
-    public Blob getPhoto()
+    public byte[] getPhoto()
     {
         return photo;
     }

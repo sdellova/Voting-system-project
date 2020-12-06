@@ -200,7 +200,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <Component id="Photo" min="-2" pref="97" max="-2" attributes="0"/>
+                              <Component id="jLabelPhoto" min="-2" pref="97" max="-2" attributes="0"/>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
@@ -250,7 +250,7 @@
                           </Group>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="Photo" pref="76" max="32767" attributes="0"/>
+                      <Component id="jLabelPhoto" pref="76" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -278,7 +278,7 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabelPolitical_party">
             </Component>
-            <Component class="javax.swing.JLabel" name="Photo">
+            <Component class="javax.swing.JLabel" name="jLabelPhoto">
               <Properties>
                 <Property name="text" type="java.lang.String" value="jLabel7"/>
               </Properties>

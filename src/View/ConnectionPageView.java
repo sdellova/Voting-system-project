@@ -1,6 +1,7 @@
 package View;
 
 import Controller.User;
+import Model.Connecting;
 import Model.UserDAO;
 import static Model.UserDAO.getUserByEmailAndPassword;
 import java.awt.event.ActionEvent;
@@ -229,7 +230,7 @@ public class ConnectionPageView extends javax.swing.JFrame implements ActionList
     }//GEN-LAST:event_jButtonLoginActionPerformed
 
     private void jButtonCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCloseActionPerformed
-        // TODO add your handling code here:
+        Connecting.deleteDB();
         System.exit(0);
     }//GEN-LAST:event_jButtonCloseActionPerformed
 

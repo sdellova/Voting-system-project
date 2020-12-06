@@ -5,11 +5,19 @@ import Controller.User;
 import Model.CandidateDAO;
 import static Model.CandidateDAO.getCandidates;
 import Model.VoterDAO;
+import java.awt.Image;
+import java.awt.Toolkit;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.sql.Blob;
+import java.sql.SQLException;
 import java.util.ArrayList;
-import javax.swing.JButton;
-import javax.swing.JLabel;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -19,11 +27,13 @@ import javax.swing.table.DefaultTableModel;
 public class VoterView extends javax.swing.JFrame
 {
 
-    private User user;
+    private final User user;
+    private Object ByteStreams;
 
     public void addRowToJTableCandidate()
     {
         DefaultTableModel model = (DefaultTableModel) jTableCandidates.getModel();
+        model.setRowCount(0);
         ArrayList<Candidate> candidates = getCandidates();
         Object rowData[] = new Object[3];
         for (int i = 0; i < candidates.size(); i++)
@@ -48,7 +58,8 @@ public class VoterView extends javax.swing.JFrame
         addRowToJTableCandidate();
     }
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -64,7 +75,7 @@ public class VoterView extends javax.swing.JFrame
         jLabelFirst_name = new javax.swing.JLabel();
         jLabelLast_name = new javax.swing.JLabel();
         jLabelPolitical_party = new javax.swing.JLabel();
-        Photo = new javax.swing.JLabel();
+        jLabelPhoto = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -81,40 +92,51 @@ public class VoterView extends javax.swing.JFrame
         jLabel2.setText("Candidates profiles :");
 
         jButtonExit.setText("EXIT");
-        jButtonExit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jButtonExit.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 jButtonExitActionPerformed(evt);
             }
         });
 
         jButtonValidateCandidateChoice.setText("Vote");
-        jButtonValidateCandidateChoice.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jButtonValidateCandidateChoice.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 jButtonValidateCandidateChoiceActionPerformed(evt);
             }
         });
 
         jTableCandidates.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+            new Object [][]
+            {
                 {null, null, null},
                 {null, null, null},
                 {null, null, null},
                 {null, null, null}
             },
-            new String [] {
+            new String []
+            {
                 "First name", "Last name", "Political party"
             }
-        ) {
-            boolean[] canEdit = new boolean [] {
+        )
+        {
+            boolean[] canEdit = new boolean []
+            {
                 false, false, false
             };
 
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
+            public boolean isCellEditable(int rowIndex, int columnIndex)
+            {
                 return canEdit [columnIndex];
             }
         });
-        jTableCandidates.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+        jTableCandidates.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
                 jTableCandidatesMouseClicked(evt);
             }
         });
@@ -126,7 +148,7 @@ public class VoterView extends javax.swing.JFrame
 
         jLabel5.setText("Political party");
 
-        Photo.setText("jLabel7");
+        jLabelPhoto.setText("jLabel7");
 
         javax.swing.GroupLayout jPanelProfileLayout = new javax.swing.GroupLayout(jPanelProfile);
         jPanelProfile.setLayout(jPanelProfileLayout);
@@ -136,7 +158,7 @@ public class VoterView extends javax.swing.JFrame
                 .addContainerGap()
                 .addGroup(jPanelProfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelProfileLayout.createSequentialGroup()
-                        .addComponent(Photo, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabelPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanelProfileLayout.createSequentialGroup()
                         .addComponent(jLabel4)
@@ -173,7 +195,7 @@ public class VoterView extends javax.swing.JFrame
                         .addGap(18, 18, 18)
                         .addComponent(jLabel5)))
                 .addGap(18, 18, 18)
-                .addComponent(Photo, javax.swing.GroupLayout.DEFAULT_SIZE, 76, Short.MAX_VALUE)
+                .addComponent(jLabelPhoto, javax.swing.GroupLayout.DEFAULT_SIZE, 76, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -271,10 +293,12 @@ public class VoterView extends javax.swing.JFrame
         jLabelFirst_name.setText(CandidateDAO.getCandidates().get(jTableCandidates.getSelectedRow()).getFirst_name());
         jLabelLast_name.setText(CandidateDAO.getCandidates().get(jTableCandidates.getSelectedRow()).getLast_name());
         jLabelPolitical_party.setText(CandidateDAO.getCandidates().get(jTableCandidates.getSelectedRow()).getPolitical_party());
+        byte[] image = CandidateDAO.getCandidates().get(jTableCandidates.getSelectedRow()).getPhoto();
+        Image img = Toolkit.getDefaultToolkit().createImage(image);
+        jLabelPhoto.setIcon(new ImageIcon(img));
     }//GEN-LAST:event_jTableCandidatesMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel Photo;
     private javax.swing.JButton jButtonExit;
     private javax.swing.JButton jButtonValidateCandidateChoice;
     private javax.swing.JLabel jLabel1;
@@ -285,6 +309,7 @@ public class VoterView extends javax.swing.JFrame
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabelFirst_name;
     private javax.swing.JLabel jLabelLast_name;
+    private javax.swing.JLabel jLabelPhoto;
     private javax.swing.JLabel jLabelPolitical_party;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanelProfile;

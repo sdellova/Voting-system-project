@@ -18,7 +18,7 @@ public class VoterDAO
             ResultSet result = statement.executeQuery(getVoters);
             while (result.next())
             {
-                voters.add(new Voter(result.getString("u_email"), result.getString("u_password"), result.getString("u_first_name"), result.getString("u_last_name"), result.getString("state"), result.getString("candidate_email"), result.getBlob("photo")));
+                voters.add(new Voter(result.getString("u_email"), result.getString("u_password"), result.getString("u_first_name"), result.getString("u_last_name"), result.getString("state"), result.getString("candidate_email"), result.getBytes("photo")));
             }
         } catch (SQLException e)
         {

@@ -6,7 +6,7 @@ public class Official extends User
 {
     private enum VotingState {OPEN, PAUSED, CLOSED};
     private static VotingState votingState = VotingState.CLOSED;
-    public Official(String email, String password, String first_name, String last_name, Blob photo)
+    public Official(String email, String password, String first_name, String last_name, byte[] photo)
     {
         super(email,password, first_name, last_name, photo); 
     }

@@ -19,7 +19,7 @@ public class CandidateDAO
             ResultSet result = statement.executeQuery(getCandidates);
             while (result.next())
             {
-                candidates.add(new Candidate(result.getString("u_email"), result.getString("u_password"), result.getString("political_party"), result.getString("u_first_name"), result.getString("u_last_name"), result.getBlob("photo")));
+                candidates.add(new Candidate(result.getString("u_email"), result.getString("u_password"), result.getString("political_party"), result.getString("u_first_name"), result.getString("u_last_name"), result.getBytes("photo")));
             }
         } catch (SQLException e)
         {
@@ -39,7 +39,7 @@ public class CandidateDAO
             ResultSet result = statement.executeQuery(getCandidate);
             while (result.next())
             {
-                return (new Candidate(email, result.getString("c_password"), result.getString("political_party"), result.getString("c_firstname"), result.getString("c_lastname"), result.getBlob("photo")));
+                return (new Candidate(email, result.getString("c_password"), result.getString("political_party"), result.getString("c_firstname"), result.getString("c_lastname"), result.getBytes("photo")));
             }
         } catch (SQLException e)
         {
