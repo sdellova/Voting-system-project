@@ -7,6 +7,31 @@ import java.util.ArrayList;
 
 public class OfficialDAO
 {
+    
+    public static ArrayList<String> getStates()
+    {
+        ArrayList<String> a = new ArrayList<>();
+        a.add("Virginie");
+        a.add("Arizona");
+        return a;
+    }
+    public static ArrayList<ArrayList<String>> getVotePercentByState()
+    {
+        ArrayList<ArrayList<String>> a = new ArrayList<>();
+        ArrayList vir = new ArrayList<String>();
+        vir.add("Virginie");
+        vir.add("75");
+        a.add(vir);
+        ArrayList ari = new ArrayList<String>();
+        ari.add("Arizona");
+        ari.add("25");
+        a.add(ari);
+        return a;
+    }
+    public static ArrayList<ArrayList<String>> getVotePercentByStateByCandidate(String email)
+    {
+        return null;
+    }
     public static void addCandidate(String email, String password, String political_party, String first_name, String last_name)
     {
         try
