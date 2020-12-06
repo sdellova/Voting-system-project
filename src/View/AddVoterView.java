@@ -174,6 +174,7 @@ public class AddVoterView extends javax.swing.JFrame
         // TODO add your handling code here:
         OfficialView V= new OfficialView();
         V.setVisible(true);
+        dispose();
     }//GEN-LAST:event_jButtonreturnActionPerformed
 
 
