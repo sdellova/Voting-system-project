@@ -61,7 +61,8 @@ public class OfficialView extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -74,7 +75,7 @@ public class OfficialView extends javax.swing.JFrame {
         jButtonAddVoter = new javax.swing.JButton();
         jButtonDeleteVoter = new javax.swing.JButton();
         jButtonWinner = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        jButtonViewStatistics = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTableVoters = new javax.swing.JTable();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -110,117 +111,156 @@ public class OfficialView extends javax.swing.JFrame {
         jLabel1.setText("Official");
 
         Exit.setText("Exit");
-        Exit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        Exit.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 ExitActionPerformed(evt);
             }
         });
 
         jButtonAddCandidate.setText("Add a candidate");
-        jButtonAddCandidate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jButtonAddCandidate.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 jButtonAddCandidateActionPerformed(evt);
             }
         });
 
         jButtonDeleteCandidate.setText("Delete a candidate");
-        jButtonDeleteCandidate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jButtonDeleteCandidate.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 jButtonDeleteCandidateActionPerformed(evt);
             }
         });
 
         jButtonStartVote.setText("Start vote");
-        jButtonStartVote.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jButtonStartVote.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 jButtonStartVoteActionPerformed(evt);
             }
         });
 
         jButtonFinishVote.setText("Finish Vote");
-        jButtonFinishVote.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jButtonFinishVote.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 jButtonFinishVoteActionPerformed(evt);
             }
         });
 
         jButtonVotingBreak.setText("Voting Break");
-        jButtonVotingBreak.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jButtonVotingBreak.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 jButtonVotingBreakActionPerformed(evt);
             }
         });
 
         jButtonAddVoter.setText("Add a voter");
-        jButtonAddVoter.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jButtonAddVoter.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 jButtonAddVoterActionPerformed(evt);
             }
         });
 
         jButtonDeleteVoter.setText("Delete a voter");
-        jButtonDeleteVoter.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jButtonDeleteVoter.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 jButtonDeleteVoterActionPerformed(evt);
             }
         });
 
         jButtonWinner.setText("Declare the winner");
-        jButtonWinner.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jButtonWinner.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 jButtonWinnerActionPerformed(evt);
             }
         });
 
-        jButton1.setText("View the statistics");
+        jButtonViewStatistics.setText("View the statistics");
+        jButtonViewStatistics.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jButtonViewStatisticsActionPerformed(evt);
+            }
+        });
 
         jTableVoters.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+            new Object [][]
+            {
                 {null, null, null},
                 {null, null, null},
                 {null, null, null},
                 {null, null, null}
             },
-            new String [] {
+            new String []
+            {
                 "First name", "Last name", "Political party"
             }
-        ) {
-            boolean[] canEdit = new boolean [] {
+        )
+        {
+            boolean[] canEdit = new boolean []
+            {
                 false, false, false
             };
 
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
+            public boolean isCellEditable(int rowIndex, int columnIndex)
+            {
                 return canEdit [columnIndex];
             }
         });
-        jTableVoters.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+        jTableVoters.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
                 jTableVotersMouseClicked(evt);
             }
         });
         jScrollPane2.setViewportView(jTableVoters);
 
         jTableCandidates.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+            new Object [][]
+            {
                 {null, null, null},
                 {null, null, null},
                 {null, null, null},
                 {null, null, null}
             },
-            new String [] {
+            new String []
+            {
                 "First name", "Last name", "Political party"
             }
-        ) {
-            boolean[] canEdit = new boolean [] {
+        )
+        {
+            boolean[] canEdit = new boolean []
+            {
                 false, false, false
             };
 
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
+            public boolean isCellEditable(int rowIndex, int columnIndex)
+            {
                 return canEdit [columnIndex];
             }
         });
-        jTableCandidates.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+        jTableCandidates.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
                 jTableCandidatesMouseClicked(evt);
             }
         });
@@ -410,7 +450,7 @@ public class OfficialView extends javax.swing.JFrame {
                             .addComponent(jButtonStartVote)
                             .addComponent(jButtonFinishVote)
                             .addComponent(jButtonWinner)
-                            .addComponent(jButton1))
+                            .addComponent(jButtonViewStatistics))
                         .addGap(38, 38, 38))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 634, Short.MAX_VALUE)
@@ -439,7 +479,7 @@ public class OfficialView extends javax.swing.JFrame {
                         .addGap(4, 4, 4)
                         .addComponent(jButtonFinishVote)
                         .addGap(9, 9, 9)
-                        .addComponent(jButton1)
+                        .addComponent(jButtonViewStatistics)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButtonWinner))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -461,7 +501,7 @@ public class OfficialView extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(40, 40, 40)
                         .addComponent(jPanelProfileVoters, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addContainerGap(22, Short.MAX_VALUE))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -552,17 +592,23 @@ public class OfficialView extends javax.swing.JFrame {
         jLabelVotesNumberCandidate.setText(String.valueOf(UserDAO.getVotesNumberByCandidate(CandidateDAO.getCandidates().get(jTableVoters.getSelectedRow()).getEmail())));
     }//GEN-LAST:event_jTableCandidatesMouseClicked
 
+    private void jButtonViewStatisticsActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButtonViewStatisticsActionPerformed
+    {//GEN-HEADEREND:event_jButtonViewStatisticsActionPerformed
+        StatisticsView s = new StatisticsView();
+        s.setVisible(true);
+    }//GEN-LAST:event_jButtonViewStatisticsActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Exit;
     private javax.swing.JLabel Photo;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonAddCandidate;
     private javax.swing.JButton jButtonAddVoter;
     private javax.swing.JButton jButtonDeleteCandidate;
     private javax.swing.JButton jButtonDeleteVoter;
     private javax.swing.JButton jButtonFinishVote;
     private javax.swing.JButton jButtonStartVote;
+    private javax.swing.JButton jButtonViewStatistics;
     private javax.swing.JButton jButtonVotingBreak;
     private javax.swing.JButton jButtonWinner;
     private javax.swing.JLabel jLabel1;
