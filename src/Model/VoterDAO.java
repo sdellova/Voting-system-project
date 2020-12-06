@@ -1,13 +1,11 @@
 package Model;
 
-import Controller.Candidate;
 import Controller.Voter;
 import java.sql.*;
 import java.util.ArrayList;
 
 public class VoterDAO
 {
-
     public static ArrayList<Voter> getVoters()
     {
         ArrayList<Voter> voters = new ArrayList<>();
@@ -20,7 +18,7 @@ public class VoterDAO
             ResultSet result = statement.executeQuery(getVoters);
             while (result.next())
             {
-                voters.add(new Voter(result.getString("u_email"), result.getString("u_password"), result.getString("u_first_name"), result.getString("u_last_name"), result.getString("state"), result.getString("candidate_email")));
+                voters.add(new Voter(result.getString("u_email"), result.getString("u_password"), result.getString("u_first_name"), result.getString("u_last_name"), result.getString("state"), result.getString("candidate_email"), result.getBlob("photo")));
             }
         } catch (SQLException e)
         {

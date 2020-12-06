@@ -17,6 +17,7 @@ public class UserDAO
     private static String user_political_party;
     private static String user_state;
     private static String user_candidate_email;
+    public static Blob user_photo;
 
     public static int getVotesNumberByCandidate(String email)
     {
@@ -107,7 +108,7 @@ public class UserDAO
                 if (result1.getString("c_email").equals(email))
                 {
                     user_political_party = result1.getString("political_party");
-                    user.add(new Candidate(user_email, user_password, user_political_party, user_first_name, user_last_name));
+                    user.add(new Candidate(user_email, user_password, user_political_party, user_first_name, user_last_name, user_photo));
                 }
             }
             result1.close();
@@ -119,7 +120,7 @@ public class UserDAO
                     System.out.println("a");
                     user_state = result2.getString("state");
                     user_candidate_email = result2.getString("candidate_email");
-                    user.add(new Voter(user_email, user_password, user_first_name, user_last_name, user_state, user_candidate_email));
+                    user.add(new Voter(user_email, user_password, user_first_name, user_last_name, user_state, user_candidate_email, user_photo));
                 }
             }
             result2.close();
@@ -128,7 +129,7 @@ public class UserDAO
             {
                 if (result3.getString("o_email").equals(email))
                 {
-                    user.add(new Official(user_email, user_password, user_first_name, user_last_name));
+                    user.add(new Official(user_email, user_password, user_first_name, user_last_name, user_photo));
                 }
             }
             result3.close();

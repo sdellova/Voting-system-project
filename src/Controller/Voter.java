@@ -1,14 +1,16 @@
 package Controller;
 
+import java.sql.Blob;
+
 public class Voter extends User
 {
 
     private final String state;
     private final String candidate_email;
 
-    public Voter(String email, String password, String first_name, String last_name, String State, String candidate_email)
+    public Voter(String email, String password, String first_name, String last_name, String State, String candidate_email, Blob photo)
     {
-        super(email, password, first_name, last_name);
+        super(email, password, first_name, last_name, photo);
         this.state = State;
         this.candidate_email = candidate_email;
     }
