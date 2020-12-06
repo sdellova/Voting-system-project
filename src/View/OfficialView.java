@@ -8,7 +8,12 @@ import Model.OfficialDAO;
 import Model.UserDAO;
 import Model.VoterDAO;
 import java.util.ArrayList;
+import javax.swing.JDialog;
 import javax.swing.table.DefaultTableModel;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.data.general.DefaultPieDataset;
 
 public class OfficialView extends javax.swing.JFrame {
 
@@ -61,8 +66,7 @@ public class OfficialView extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -75,7 +79,7 @@ public class OfficialView extends javax.swing.JFrame {
         jButtonAddVoter = new javax.swing.JButton();
         jButtonDeleteVoter = new javax.swing.JButton();
         jButtonWinner = new javax.swing.JButton();
-        jButtonViewStatistics = new javax.swing.JButton();
+        jButtonViewStatisticsofState = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTableVoters = new javax.swing.JTable();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -100,6 +104,9 @@ public class OfficialView extends javax.swing.JFrame {
         jLabelPolitical_partyCandidate = new javax.swing.JLabel();
         jLabelVotesNumberCandidate = new javax.swing.JLabel();
         Photo = new javax.swing.JLabel();
+        jButtonStatisticgeneral = new javax.swing.JButton();
+        jButtonabstentionrateG = new javax.swing.JButton();
+        jButtonAbstentionrateS = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -111,156 +118,122 @@ public class OfficialView extends javax.swing.JFrame {
         jLabel1.setText("Official");
 
         Exit.setText("Exit");
-        Exit.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        Exit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ExitActionPerformed(evt);
             }
         });
 
         jButtonAddCandidate.setText("Add a candidate");
-        jButtonAddCandidate.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        jButtonAddCandidate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonAddCandidateActionPerformed(evt);
             }
         });
 
         jButtonDeleteCandidate.setText("Delete a candidate");
-        jButtonDeleteCandidate.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        jButtonDeleteCandidate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonDeleteCandidateActionPerformed(evt);
             }
         });
 
         jButtonStartVote.setText("Start vote");
-        jButtonStartVote.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        jButtonStartVote.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonStartVoteActionPerformed(evt);
             }
         });
 
         jButtonFinishVote.setText("Finish Vote");
-        jButtonFinishVote.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        jButtonFinishVote.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonFinishVoteActionPerformed(evt);
             }
         });
 
         jButtonVotingBreak.setText("Voting Break");
-        jButtonVotingBreak.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        jButtonVotingBreak.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonVotingBreakActionPerformed(evt);
             }
         });
 
         jButtonAddVoter.setText("Add a voter");
-        jButtonAddVoter.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        jButtonAddVoter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonAddVoterActionPerformed(evt);
             }
         });
 
         jButtonDeleteVoter.setText("Delete a voter");
-        jButtonDeleteVoter.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        jButtonDeleteVoter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonDeleteVoterActionPerformed(evt);
             }
         });
 
         jButtonWinner.setText("Declare the winner");
-        jButtonWinner.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        jButtonWinner.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonWinnerActionPerformed(evt);
             }
         });
 
-        jButtonViewStatistics.setText("View the statistics");
-        jButtonViewStatistics.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
-                jButtonViewStatisticsActionPerformed(evt);
+        jButtonViewStatisticsofState.setText("View the statistics of state ");
+        jButtonViewStatisticsofState.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonViewStatisticsofStateActionPerformed(evt);
             }
         });
 
         jTableVoters.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][]
-            {
+            new Object [][] {
                 {null, null, null},
                 {null, null, null},
                 {null, null, null},
                 {null, null, null}
             },
-            new String []
-            {
+            new String [] {
                 "First name", "Last name", "Political party"
             }
-        )
-        {
-            boolean[] canEdit = new boolean []
-            {
+        ) {
+            boolean[] canEdit = new boolean [] {
                 false, false, false
             };
 
-            public boolean isCellEditable(int rowIndex, int columnIndex)
-            {
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        jTableVoters.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseClicked(java.awt.event.MouseEvent evt)
-            {
+        jTableVoters.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTableVotersMouseClicked(evt);
             }
         });
         jScrollPane2.setViewportView(jTableVoters);
 
         jTableCandidates.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][]
-            {
+            new Object [][] {
                 {null, null, null},
                 {null, null, null},
                 {null, null, null},
                 {null, null, null}
             },
-            new String []
-            {
+            new String [] {
                 "First name", "Last name", "Political party"
             }
-        )
-        {
-            boolean[] canEdit = new boolean []
-            {
+        ) {
+            boolean[] canEdit = new boolean [] {
                 false, false, false
             };
 
-            public boolean isCellEditable(int rowIndex, int columnIndex)
-            {
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        jTableCandidates.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseClicked(java.awt.event.MouseEvent evt)
-            {
+        jTableCandidates.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTableCandidatesMouseClicked(evt);
             }
         });
@@ -415,6 +388,27 @@ public class OfficialView extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jButtonStatisticgeneral.setText("View the statistics general");
+        jButtonStatisticgeneral.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonStatisticgeneralActionPerformed(evt);
+            }
+        });
+
+        jButtonabstentionrateG.setText("View abstention rate general");
+        jButtonabstentionrateG.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonabstentionrateGActionPerformed(evt);
+            }
+        });
+
+        jButtonAbstentionrateS.setText("View abstention rate by states");
+        jButtonAbstentionrateS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAbstentionrateSActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -424,9 +418,13 @@ public class OfficialView extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(16, 16, 16)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 650, Short.MAX_VALUE)
+                        .addComponent(Exit)
+                        .addGap(30, 30, 30))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(16, 16, 16)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -444,18 +442,17 @@ public class OfficialView extends javax.swing.JFrame {
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jButtonAddVoter, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(jButtonDeleteVoter, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 135, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButtonVotingBreak)
                             .addComponent(jButtonStartVote)
                             .addComponent(jButtonFinishVote)
+                            .addComponent(jButtonStatisticgeneral)
                             .addComponent(jButtonWinner)
-                            .addComponent(jButtonViewStatistics))
-                        .addGap(38, 38, 38))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 634, Short.MAX_VALUE)
-                        .addComponent(Exit)
-                        .addGap(30, 30, 30))))
+                            .addComponent(jButtonabstentionrateG)
+                            .addComponent(jButtonAbstentionrateS)
+                            .addComponent(jButtonViewStatisticsofState))
+                        .addGap(38, 38, 38))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -463,45 +460,57 @@ public class OfficialView extends javax.swing.JFrame {
                 .addGap(19, 19, 19)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addComponent(jButtonAddCandidate, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(32, 32, 32)
-                        .addComponent(jButtonDeleteCandidate, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(53, 53, 53)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addComponent(jButtonStartVote)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonVotingBreak)
-                        .addGap(4, 4, 4)
-                        .addComponent(jButtonFinishVote)
-                        .addGap(9, 9, 9)
-                        .addComponent(jButtonViewStatistics)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonWinner))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(jPanelProfileCandidates, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jPanelProfileCandidates, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(39, 39, 39)
+                                .addComponent(jButtonAddCandidate, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(32, 32, 32)
+                                .addComponent(jButtonDeleteCandidate, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(53, 53, 53)
+                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(26, 26, 26)
+                                .addComponent(jButtonStartVote)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButtonVotingBreak)
+                                .addGap(4, 4, 4)
+                                .addComponent(jButtonFinishVote)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jButtonViewStatisticsofState)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonStatisticgeneral)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonabstentionrateG)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(100, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
-                        .addComponent(jButtonAddVoter, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(45, 45, 45)
-                        .addComponent(jButtonDeleteVoter, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(60, 60, 60)
-                        .addComponent(Exit)
-                        .addGap(14, 14, 14))
+                        .addContainerGap(102, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(40, 40, 40)
+                        .addGap(30, 30, 30)
                         .addComponent(jPanelProfileVoters, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(22, Short.MAX_VALUE))))
+                        .addContainerGap(22, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jButtonAddVoter, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(45, 45, 45)
+                                .addComponent(jButtonDeleteVoter, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(jButtonAbstentionrateS)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButtonWinner)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Exit)
+                        .addGap(14, 14, 14))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -592,25 +601,159 @@ public class OfficialView extends javax.swing.JFrame {
         jLabelVotesNumberCandidate.setText(String.valueOf(UserDAO.getVotesNumberByCandidate(CandidateDAO.getCandidates().get(jTableVoters.getSelectedRow()).getEmail())));
     }//GEN-LAST:event_jTableCandidatesMouseClicked
 
-    private void jButtonViewStatisticsActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButtonViewStatisticsActionPerformed
-    {//GEN-HEADEREND:event_jButtonViewStatisticsActionPerformed
-        StatisticsView s = new StatisticsView();
-        s.setVisible(true);
-    }//GEN-LAST:event_jButtonViewStatisticsActionPerformed
+    private void jButtonViewStatisticsofStateActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButtonViewStatisticsofStateActionPerformed
+    {//GEN-HEADEREND:event_jButtonViewStatisticsofStateActionPerformed
+      
+        DefaultPieDataset pieDataset = new DefaultPieDataset();
+        ArrayList<String> states = OfficialDAO.getStates();
+        ArrayList<ArrayList<String>> statesAndVotes = OfficialDAO.getVotePercentByState();
+        for(int i=0 ; i < OfficialDAO.getStates().size() ; ++i)
+        {
+            pieDataset.setValue(statesAndVotes.get(i).get(0), Integer.parseInt(statesAndVotes.get(i).get(1)));
+        }
+        JFreeChart pieChart = ChartFactory.createPieChart("Vote percent by state", pieDataset, true, false, false);
+        final ChartPanel cPanel = new ChartPanel(pieChart);
+        JDialog a = new JDialog();
+        a.setTitle("Pourcent by state");
+        a.getContentPane().add(cPanel);
+        a.pack();
+	a.setVisible(true);
+        
+        DefaultPieDataset piedataset = new DefaultPieDataset();
+        ArrayList<String> statesNumber = OfficialDAO.getStatesNumber();
+        ArrayList<ArrayList<String>> statesAndVotesNumber = OfficialDAO.getVoteNumberByState();
+        for(int i=0 ; i < OfficialDAO.getStatesNumber().size() ; ++i)
+        {
+            piedataset.setValue(statesAndVotesNumber.get(i).get(0), Integer.parseInt(statesAndVotesNumber.get(i).get(1)));
+        }
+        JFreeChart pieChartN = ChartFactory.createPieChart("Vote number by state", piedataset, true, false, false);
+        final ChartPanel cPanel2 = new ChartPanel(pieChartN);
+        JDialog b = new JDialog();
+        b.setTitle("Number by state");
+        b.getContentPane().add(cPanel2);
+        b.pack();
+	b.setVisible(true);
+    
+    }//GEN-LAST:event_jButtonViewStatisticsofStateActionPerformed
+
+    private void jButtonStatisticgeneralActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonStatisticgeneralActionPerformed
+        
+        DefaultPieDataset pieDataset = new DefaultPieDataset();
+        ArrayList<String> Voter = OfficialDAO.getVoter();
+        ArrayList<ArrayList<String>> VoterAndVotes = OfficialDAO.getVotePercentByCandidate();
+        for(int i=0 ; i < OfficialDAO.getVoter().size() ; ++i)
+        {
+            pieDataset.setValue(VoterAndVotes.get(i).get(0), Integer.parseInt(VoterAndVotes.get(i).get(1)));
+        }
+        JFreeChart pieChart = ChartFactory.createPieChart("Vote percent by voter", pieDataset, true, false, false);
+        final ChartPanel cPanel = new ChartPanel(pieChart);
+        JDialog a = new JDialog();
+        a.setTitle("Pourcent by vote");
+        a.getContentPane().add(cPanel);
+        a.pack();
+	a.setVisible(true);
+        
+        DefaultPieDataset piedataset = new DefaultPieDataset();
+        ArrayList<String> VoterNumber = OfficialDAO.getVoterNumber();
+        ArrayList<ArrayList<String>> VoterAndVotesNumber = OfficialDAO.getVoterNumberByState();
+        for(int i=0 ; i < OfficialDAO.getVoterNumber().size() ; ++i)
+        {
+            piedataset.setValue(VoterAndVotesNumber.get(i).get(0), Integer.parseInt(VoterAndVotesNumber.get(i).get(1)));
+        }
+        JFreeChart pieChartN = ChartFactory.createPieChart("Vote number by voter", piedataset, true, false, false);
+        final ChartPanel cPanel2 = new ChartPanel(pieChartN);
+        JDialog b = new JDialog();
+        b.setTitle("Number by vote");
+        b.getContentPane().add(cPanel2);
+        b.pack();
+	b.setVisible(true);
+        
+    }//GEN-LAST:event_jButtonStatisticgeneralActionPerformed
+
+    private void jButtonabstentionrateGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonabstentionrateGActionPerformed
+        DefaultPieDataset pieDataset = new DefaultPieDataset();
+        ArrayList<String> AbstentionVoter = OfficialDAO.getAbstentionVoter();
+        ArrayList<ArrayList<String>> AbstentionVoterAndVotes = OfficialDAO.getAbstentionVotePercentByCandidate();
+        for(int i=0 ; i < OfficialDAO.getAbstentionVoter().size() ; ++i)
+        {
+            pieDataset.setValue(AbstentionVoterAndVotes.get(i).get(0), Integer.parseInt(AbstentionVoterAndVotes.get(i).get(1)));
+        }
+        JFreeChart pieChart = ChartFactory.createPieChart("Abstention percent by voter", pieDataset, true, false, false);
+        final ChartPanel cPanel = new ChartPanel(pieChart);
+        JDialog a = new JDialog();
+        a.setTitle("Pourcent abstention voter");
+        a.getContentPane().add(cPanel);
+        a.pack();
+	a.setVisible(true);
+        
+        DefaultPieDataset piedataset = new DefaultPieDataset();
+        ArrayList<String> AbstentionVoterNumber = OfficialDAO.getAbstentionVoterNumber();
+        ArrayList<ArrayList<String>> AbstentionVoterAndVotesNumber = OfficialDAO.getAbstentionVoterNumberByCandidate();
+        for(int i=0 ; i < OfficialDAO.getAbstentionVoterNumber().size() ; ++i)
+        {
+            piedataset.setValue(AbstentionVoterAndVotesNumber.get(i).get(0), Integer.parseInt(AbstentionVoterAndVotesNumber.get(i).get(1)));
+        }
+        JFreeChart pieChartN = ChartFactory.createPieChart("Abstention number by voter", pieDataset, true, false, false);
+        final ChartPanel cPanel2 = new ChartPanel(pieChartN);
+        JDialog b = new JDialog();
+        b.setTitle("Number abstention voter");
+        b.getContentPane().add(cPanel2);
+        b.pack();
+	b.setVisible(true);
+        
+        
+    }//GEN-LAST:event_jButtonabstentionrateGActionPerformed
+
+    private void jButtonAbstentionrateSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAbstentionrateSActionPerformed
+        DefaultPieDataset pieDataset = new DefaultPieDataset();
+        ArrayList<String> Abstentionstates = OfficialDAO.getAbstentionStates();
+        ArrayList<ArrayList<String>> statesAndVotesAbstention = OfficialDAO.getVotePercentByStateAbstention();
+        for(int i=0 ; i < OfficialDAO.getAbstentionStates().size() ; ++i)
+        {
+            pieDataset.setValue(statesAndVotesAbstention.get(i).get(0), Integer.parseInt(statesAndVotesAbstention.get(i).get(1)));
+        }
+        JFreeChart pieChart = ChartFactory.createPieChart("Abstention percent by state", pieDataset, true, false, false);
+        final ChartPanel cPanel = new ChartPanel(pieChart);
+        JDialog a = new JDialog();
+        a.setTitle("Abstention Pourcent by state");
+        a.getContentPane().add(cPanel);
+        a.pack();
+	a.setVisible(true);
+        
+        DefaultPieDataset piedataset = new DefaultPieDataset();
+        ArrayList<String> AbstentionstatesNumber = OfficialDAO.getAbstentionStatesNumber();
+        ArrayList<ArrayList<String>> statesAndVotesAbstentionNumber = OfficialDAO.getVotePercentByStateAbstentionNumber();
+        for(int i=0 ; i < OfficialDAO.getAbstentionStatesNumber().size() ; ++i)
+        {
+            pieDataset.setValue(statesAndVotesAbstentionNumber.get(i).get(0), Integer.parseInt(statesAndVotesAbstentionNumber.get(i).get(1)));
+        }
+        JFreeChart pieChartN = ChartFactory.createPieChart("Abstention number by state", pieDataset, true, false, false);
+        final ChartPanel cPanel2 = new ChartPanel(pieChartN);
+        JDialog b = new JDialog();
+        b.setTitle("Abstention number by state");
+        b.getContentPane().add(cPanel2);
+        b.pack();
+	b.setVisible(true);
+        
+        
+    }//GEN-LAST:event_jButtonAbstentionrateSActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Exit;
     private javax.swing.JLabel Photo;
+    private javax.swing.JButton jButtonAbstentionrateS;
     private javax.swing.JButton jButtonAddCandidate;
     private javax.swing.JButton jButtonAddVoter;
     private javax.swing.JButton jButtonDeleteCandidate;
     private javax.swing.JButton jButtonDeleteVoter;
     private javax.swing.JButton jButtonFinishVote;
     private javax.swing.JButton jButtonStartVote;
-    private javax.swing.JButton jButtonViewStatistics;
+    private javax.swing.JButton jButtonStatisticgeneral;
+    private javax.swing.JButton jButtonViewStatisticsofState;
     private javax.swing.JButton jButtonVotingBreak;
     private javax.swing.JButton jButtonWinner;
+    private javax.swing.JButton jButtonabstentionrateG;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel3;
