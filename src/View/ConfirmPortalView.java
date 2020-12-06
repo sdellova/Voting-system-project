@@ -1,47 +1,36 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package View;
-// import View.Candidat;
-
 import Controller.User;
 import java.util.ArrayList;
 
+public class ConfirmPortalView extends javax.swing.JFrame
+{
 
-// import View.Official;
-/**
- *
- * @author stanislasduval
- */
-public class ConfirmPortalView extends javax.swing.JFrame {
+    private ArrayList<User> users;
 
-    /**
-     * Creates new form ConfirmPortal
-     */
-    public ConfirmPortalView(ArrayList<User> users) {
+    public ConfirmPortalView(ArrayList<User> users)
+    {
+        this.users = users;
         initComponents();
         jRadioCandidate.setVisible(false);
         jRadioVoter.setVisible(false);
         jRadioOfficial.setVisible(false);
-        
-        for(int i = 0; i< users.size();i++)
+
+        for (int i = 0; i < users.size(); i++)
         {
-            if (users.get(i).toString()== "candidat")
-               {
-                  jRadioCandidate.setVisible(true);
-               }
-               else if (users.get(i).toString()== "voter")
-                       {
-                           jRadioVoter.setVisible(true);
-                       }
-               else if (users.get(i).toString()== "official")
-                       {
-                         jRadioOfficial.setVisible(true);
-                       }
+            switch (users.get(i).toString())
+            {
+                case "candidat":
+                    jRadioCandidate.setVisible(true);
+                    break;
+                case "voter":
+                    jRadioVoter.setVisible(true);
+                    break;
+                case "official":
+                    jRadioOfficial.setVisible(true);
+                    break;
+            }
         }
-        
+
     }
 
     /**
@@ -51,7 +40,8 @@ public class ConfirmPortalView extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -75,38 +65,27 @@ public class ConfirmPortalView extends javax.swing.JFrame {
 
         jRadioCandidate.setForeground(new java.awt.Color(255, 255, 255));
         jRadioCandidate.setText("Candidate ");
-        jRadioCandidate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioCandidateActionPerformed(evt);
-            }
-        });
 
         jRadioVoter.setForeground(new java.awt.Color(255, 255, 255));
         jRadioVoter.setText("Voter");
-        jRadioVoter.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioVoterActionPerformed(evt);
-            }
-        });
 
         jRadioOfficial.setForeground(new java.awt.Color(255, 255, 255));
         jRadioOfficial.setText("Official");
-        jRadioOfficial.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioOfficialActionPerformed(evt);
-            }
-        });
 
         jButton1.setText("EXIT");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jButton1.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 jButton1ActionPerformed(evt);
             }
         });
 
         jButtonValidate.setText("Validate");
-        jButtonValidate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jButtonValidate.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 jButtonValidateActionPerformed(evt);
             }
         });
@@ -178,47 +157,25 @@ public class ConfirmPortalView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-         System.exit(0);        
+        System.exit(0);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButtonValidateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonValidateActionPerformed
         // TODO add your handling code here:
-       if( jRadioCandidate.isSelected())
-       {
-       CandidatView c = new CandidatView();
-       c.setVisible(true);
-       }else if (jRadioVoter.isSelected())
-       {
-        VoterView V = new VoterView();
-        V.setVisible(true); 
-       }else if (jRadioOfficial.isSelected())
-       {
-        OfficialView O = new OfficialView();
-        O.setVisible(true);
-       }
+        if (jRadioCandidate.isSelected())
+        {
+            CandidateView c = new CandidateView(users.get(0));
+            c.setVisible(true);
+        } else if (jRadioVoter.isSelected())
+        {
+            VoterView V = new VoterView(users.get(0));
+            V.setVisible(true);
+        } else if (jRadioOfficial.isSelected())
+        {
+            OfficialView O = new OfficialView();
+            O.setVisible(true);
+        }
     }//GEN-LAST:event_jButtonValidateActionPerformed
-
-    private void jRadioCandidateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioCandidateActionPerformed
-        // TODO add your handling code here:
-       CandidatView c = new CandidatView();
-       c.setVisible(true);
-    }//GEN-LAST:event_jRadioCandidateActionPerformed
-
-    private void jRadioVoterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioVoterActionPerformed
-        // TODO add your handling code here:
-        VoterView V = new VoterView();
-        V.setVisible(true);
-    }//GEN-LAST:event_jRadioVoterActionPerformed
-
-    private void jRadioOfficialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioOfficialActionPerformed
-        // TODO add your handling code here:
-        OfficialView O = new OfficialView();
-        O.setVisible(true);
-    }//GEN-LAST:event_jRadioOfficialActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

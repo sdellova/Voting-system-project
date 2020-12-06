@@ -7,8 +7,7 @@ import java.util.ArrayList;
 
 public class OfficialDAO
 {
-
-    public void addCandidate(String email, String password, String political_party, String first_name, String last_name)
+    public static void addCandidate(String email, String password, String political_party, String first_name, String last_name)
     {
         try
         {
@@ -27,16 +26,16 @@ public class OfficialDAO
         }
     }
 
-    public void deleteCandidate(Candidate candidate)
+    public static void deleteCandidate(String email)
     {
         try
         {
             Connection connection = Connecting.getDBConnection();
             Statement statement = connection.createStatement();
             String deleteCandidate = "DELETE FROM user"
-                    + "WHERE u_email = " + candidate.getEmail()
+                    + "WHERE u_email = " + email
                     + " DELETE FROM candidate"
-                    + "WHERE c_email = " + candidate.getEmail();
+                    + "WHERE c_email = " + email;
             statement.execute(deleteCandidate);
         } catch (SQLException e)
         {
@@ -44,7 +43,7 @@ public class OfficialDAO
         }
     }
 
-    public void addVoter(String email, String password, String first_name, String last_name, String state)
+    public static void addVoter(String email, String password, String first_name, String last_name, String state)
     {
         try
         {
@@ -63,16 +62,16 @@ public class OfficialDAO
         }
     }
 
-    public void deleteVoter(Voter voter)
+    public static void deleteVoter(String email)
     {
         try
         {
             Connection connection = Connecting.getDBConnection();
             Statement statement = connection.createStatement();
             String deleteVoter = "DELETE FROM user"
-                    + "WHERE u_email = " + voter.getEmail()
+                    + "WHERE u_email = " + email
                     + "DELETE FROM voter"
-                    + "WHERE v_email = " + voter.getEmail();
+                    + "WHERE v_email = " + email;
             statement.execute(deleteVoter);
         } catch (SQLException e)
         {
@@ -80,8 +79,8 @@ public class OfficialDAO
         }
     }
 
-    public ArrayList<Candidate> getWinner()
-    {//à refaire
+    public static ArrayList<Candidate> getWinner() // à refaire
+    {
         try
         {
             Connection connection = Connecting.getDBConnection();

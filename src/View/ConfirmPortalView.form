@@ -131,9 +131,6 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Candidate "/>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioCandidateActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JRadioButton" name="jRadioVoter">
           <Properties>
@@ -142,9 +139,6 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Voter"/>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioVoterActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JRadioButton" name="jRadioOfficial">
           <Properties>
@@ -153,9 +147,6 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Official"/>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioOfficialActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jButton1">
           <Properties>

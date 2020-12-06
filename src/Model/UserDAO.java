@@ -18,6 +18,28 @@ public class UserDAO
     private static String user_state;
     private static String user_candidate_email;
 
+    public static int getVotesNumberByCandidate(String email)
+    {
+        try
+        {
+        Connection connection = Connecting.getDBConnection();
+        Statement statement = connection.createStatement();
+        String str = "SELECT COUNT(*) "
+                   + "FROM voter "
+                   + "WHERE candidate_email = '" + email + "'";
+        ResultSet result = statement.executeQuery(str);
+        while(result.next())
+                {
+                    System.out.println(result.next());
+                }
+        }
+        catch(SQLException e)
+        {
+            System.out.println(e.getMessage());
+        }
+        return 0;
+    }
+
     public static int isCorrect(String email, String password)
     {
         try

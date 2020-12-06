@@ -16,7 +16,7 @@ public class VoterDAO
             Connection connection = Connecting.getDBConnection();
             Statement statement = connection.createStatement();
             String getVoters = "SELECT voter.*, user.* FROM voter,user "
-                        + "WHERE voter.v_email = user.u_email";
+                    + "WHERE voter.v_email = user.u_email";
             ResultSet result = statement.executeQuery(getVoters);
             while (result.next())
             {
@@ -29,26 +29,25 @@ public class VoterDAO
         return voters;
     }
 
-    public void castVote(Candidate candidate, Voter voter)
+    public static void castVote(String candidateEmail, String voterEmail)
     {
-        if (voter.getHasAlreadyVoted())
+        /*if (voter.getHasAlreadyVoted())
+         {
+         return;
+         } else
+         {*/
+        try
         {
-            return;
-        } else
+            Connection connection = Connecting.getDBConnection();
+            Statement statement = connection.createStatement();
+            String insertVote = "INSERT INTO voter(candidate_email)"
+                    + "VALUES"
+                    + "('" + candidateEmail + "');";
+            statement.execute(insertVote);
+            // voter.setHasAlreadyVoted(true);
+        } catch (SQLException e)
         {
-            try
-            {
-                Connection connection = Connecting.getDBConnection();
-                Statement statement = connection.createStatement();
-                String insertVote = "INSERT INTO voter(candidate_email)"
-                        + "VALUES"
-                        + "('" + candidate.getEmail() + "');";
-                statement.execute(insertVote);
-                voter.setHasAlreadyVoted(true);
-            } catch (SQLException e)
-            {
-                System.out.println(e.getMessage());
-            }
+            System.out.println(e.getMessage());
         }
     }
 }
