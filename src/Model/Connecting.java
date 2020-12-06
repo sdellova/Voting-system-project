@@ -170,7 +170,7 @@ public class Connecting {
                 + "('boris.hermann@mail.com', 'abcdef', 'Boris', 'Hermann', '" + p29 + "'),"
                 + "('thomas.ruyant@mail.com', 'abcdef', 'Thomas', 'Ruyant', '" + p30 + "'),"
                 + "('armel.tripon@mail.com', 'abcdef', 'Armel', 'Tripon', '" + p31 + "'),"
-                + "('jeremie.beyou@mail.com', 'abcdef', 'Jérémie', 'Beyou', '" + p32 + "'),";
+                + "('jeremie.beyou@mail.com', 'abcdef', 'Jérémie', 'Beyou', '" + p32 + "');";
         String addCandidate = "INSERT INTO candidate(c_email, political_party)"
                 + "VALUES"
                 + "('nicolas.dupont-aignan@mail.com', 'Debout la France'),"

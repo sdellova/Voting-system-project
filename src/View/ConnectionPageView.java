@@ -23,7 +23,8 @@ public class ConnectionPageView extends javax.swing.JFrame implements ActionList
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -58,15 +59,19 @@ public class ConnectionPageView extends javax.swing.JFrame implements ActionList
         jLabel6.setText("Password :");
 
         jButtonLogin.setText("Login");
-        jButtonLogin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jButtonLogin.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 jButtonLoginActionPerformed(evt);
             }
         });
 
         jButtonClose.setText("Close");
-        jButtonClose.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jButtonClose.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 jButtonCloseActionPerformed(evt);
             }
         });
@@ -74,22 +79,25 @@ public class ConnectionPageView extends javax.swing.JFrame implements ActionList
         P.setForeground(new java.awt.Color(255, 255, 255));
 
         Reset.setText("Reset");
-        Reset.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        Reset.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 ResetActionPerformed(evt);
             }
         });
 
         showPassword.setForeground(new java.awt.Color(255, 255, 255));
         showPassword.setText("Show Password");
-        showPassword.setActionCommand("Show Password");
-        showPassword.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        showPassword.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 showPasswordActionPerformed(evt);
             }
         });
 
-        jLabel2.setIcon(new javax.swing.ImageIcon("/Users/stanislasduval/NetBeansProjects/GitHub/Image ece.png")); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/ece.png"))); // NOI18N
         jLabel2.setText("jLabel2");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
