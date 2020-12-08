@@ -4,7 +4,6 @@ import java.sql.Blob;
 
 public class Voter extends User
 {
-
     private final String state;
     private final String candidate_email;
 

@@ -8,6 +8,7 @@ import Model.OfficialDAO;
 import Model.UserDAO;
 import Model.VoterDAO;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class OfficialView extends javax.swing.JFrame {
@@ -566,11 +567,10 @@ public class OfficialView extends javax.swing.JFrame {
 
     private void jButtonWinnerActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButtonWinnerActionPerformed
     {//GEN-HEADEREND:event_jButtonWinnerActionPerformed
-        ArrayList<Candidate> winners = OfficialDAO.getWinner();
+        ArrayList<String> winners = OfficialDAO.getWinner();
         for(int i=0 ; i < winners.size() ; ++i)
         {
-            CandidateProfileView candidateProfile = new CandidateProfileView(winners.get(i).getEmail(), winners.get(i).getFirst_name(), winners.get(i).getLast_name(), winners.get(i).getPolitical_party());
-            candidateProfile.setVisible(true);
+            JOptionPane.showMessageDialog(null, CandidateDAO.getCandidateByEmail(winners.get(i)).getFirst_name() + " " + CandidateDAO.getCandidateByEmail(winners.get(i)).getLast_name() + " has won the election !");
         }
     }//GEN-LAST:event_jButtonWinnerActionPerformed
 

@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 public class VoterDAO
 {
+
     public static ArrayList<Voter> getVoters()
     {
         ArrayList<Voter> voters = new ArrayList<>();
@@ -27,22 +28,40 @@ public class VoterDAO
         return voters;
     }
 
+    public static boolean hasAlreadyVoted(String voterEmail)
+    {
+        boolean hasAlreadyVoted = false;
+        try
+        {
+        Connection connection = Connecting.getDBConnection();
+        Statement statement = connection.createStatement();
+        String str = "SELECT candidate_email FROM voter WHERE v_email = '" + voterEmail + "'";
+        ResultSet result = statement.executeQuery(str);
+        while(result.next())
+        {
+            if(result.getString("candidate_email") != null)
+            {
+                hasAlreadyVoted = true;
+            }
+        }
+        }
+        catch(SQLException e)
+        {
+            System.out.println(e.getMessage());
+        }
+        return hasAlreadyVoted;
+    }
+
     public static void castVote(String candidateEmail, String voterEmail)
     {
-        /*if (voter.getHasAlreadyVoted())
-         {
-         return;
-         } else
-         {*/
         try
         {
             Connection connection = Connecting.getDBConnection();
             Statement statement = connection.createStatement();
-            String insertVote = "INSERT INTO voter(candidate_email)"
-                    + "VALUES"
-                    + "('" + candidateEmail + "');";
-            statement.execute(insertVote);
-            // voter.setHasAlreadyVoted(true);
+            String updateVote = "UPDATE voter "
+                    + "SET candidate_email = '" + candidateEmail + "' "
+                    + "WHERE v_email = '" + voterEmail + "'";
+            statement.execute(updateVote);
         } catch (SQLException e)
         {
             System.out.println(e.getMessage());

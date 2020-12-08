@@ -28,18 +28,18 @@ public class CandidateDAO
         return candidates;
     }
 
-    public static Candidate getCandidateByEmail(String email)
+    public static Candidate getCandidateByEmail(String email) // à refaire
     {
         try
         {
             Connection connection = Connecting.getDBConnection();
             Statement statement = connection.createStatement();
-            String getCandidate = "SELECT * FROM candidate "
-                    + "WHERE c_email = '" + email + "'";
+            String getCandidate = "SELECT candidate.*, user.* FROM candidate,user "
+                        + "WHERE candidate.c_email = user.u_email AND candidate.c_email = '" + email + "'";
             ResultSet result = statement.executeQuery(getCandidate);
             while (result.next())
             {
-                return (new Candidate(email, result.getString("c_password"), result.getString("political_party"), result.getString("c_firstname"), result.getString("c_lastname"), result.getBytes("photo")));
+                return (new Candidate(email, result.getString("u_password"), result.getString("political_party"), result.getString("u_first_name"), result.getString("u_last_name"), result.getBytes("photo")));
             }
         } catch (SQLException e)
         {
