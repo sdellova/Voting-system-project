@@ -7,7 +7,12 @@ import static Model.CandidateDAO.getCandidates;
 import Model.OfficialDAO;
 import Model.UserDAO;
 import java.util.ArrayList;
+import javax.swing.JDialog;
 import javax.swing.table.DefaultTableModel;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.data.general.DefaultPieDataset;
 
 public class CandidateView extends javax.swing.JFrame
 {
@@ -62,7 +67,7 @@ public class CandidateView extends javax.swing.JFrame
         jLabelLast_name = new javax.swing.JLabel();
         jLabelVotesNumberReceived = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        Photo = new javax.swing.JLabel();
+        jButtonViewVote = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jLabelnbVotes = new javax.swing.JLabel();
 
@@ -129,7 +134,12 @@ public class CandidateView extends javax.swing.JFrame
 
         jLabel7.setText("Number of votes received ");
 
-        Photo.setText("jLabel8");
+        jButtonViewVote.setText("View Vote");
+        jButtonViewVote.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonViewVoteActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanelProfileLayout = new javax.swing.GroupLayout(jPanelProfile);
         jPanelProfile.setLayout(jPanelProfileLayout);
@@ -141,6 +151,7 @@ public class CandidateView extends javax.swing.JFrame
                     .addGroup(jPanelProfileLayout.createSequentialGroup()
                         .addComponent(jLabel7)
                         .addGap(67, 67, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
                         .addComponent(jLabelVotesNumberReceived, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanelProfileLayout.createSequentialGroup()
                         .addGroup(jPanelProfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -153,10 +164,10 @@ public class CandidateView extends javax.swing.JFrame
                             .addComponent(jLabelPolitical_party, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE)
                             .addComponent(jLabelFirst_name, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
-            .addGroup(jPanelProfileLayout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(Photo, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelProfileLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButtonViewVote)
+                .addGap(23, 23, 23))
         );
         jPanelProfileLayout.setVerticalGroup(
             jPanelProfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -180,6 +191,15 @@ public class CandidateView extends javax.swing.JFrame
                 .addGap(18, 18, 18)
                 .addComponent(Photo, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+
+                .addGap(23, 23, 23)
+                .addGroup(jPanelProfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel7)
+                    .addComponent(jLabelVotesNumberReceived, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                .addComponent(jButtonViewVote)
+                .addGap(30, 30, 30))
+
         );
 
         jLabel6.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
@@ -193,8 +213,8 @@ public class CandidateView extends javax.swing.JFrame
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(Exit, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -208,13 +228,24 @@ public class CandidateView extends javax.swing.JFrame
                         .addComponent(jLabelnbVotes, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(280, 280, 280))
                     .addGroup(jPanel1Layout.createSequentialGroup()
+
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(Exit, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(80, 80, 80)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)))
+
                         .addGap(53, 53, 53)
-                        .addComponent(jPanelProfile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(276, 276, 276)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanelProfile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(276, 276, 276)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(165, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -230,11 +261,11 @@ public class CandidateView extends javax.swing.JFrame
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 93, Short.MAX_VALUE)
                         .addComponent(Exit, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jPanelProfile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 14, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -266,13 +297,47 @@ public class CandidateView extends javax.swing.JFrame
         jLabelFirst_name.setText(CandidateDAO.getCandidates().get(jTableCandidates.getSelectedRow()).getFirst_name());
         jLabelLast_name.setText(CandidateDAO.getCandidates().get(jTableCandidates.getSelectedRow()).getLast_name());
         jLabelPolitical_party.setText(CandidateDAO.getCandidates().get(jTableCandidates.getSelectedRow()).getPolitical_party());
+
         jLabelVotesNumberReceived.setText(String.valueOf(UserDAO.getVotesNumberByCandidate(user.getEmail())));
+
     }//GEN-LAST:event_jTableCandidatesMouseClicked
+
+    private void jButtonViewVoteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonViewVoteActionPerformed
+DefaultPieDataset pieDataset = new DefaultPieDataset();
+       
+        ArrayList<ArrayList<String>> VoterAndVotesCandidate = OfficialDAO.getVotePercentByStateByCandidate(CandidateDAO.getCandidates().get(jTableCandidates.getSelectedRow()).getEmail());
+        for(int i=0 ; i < VoterAndVotesCandidate.size() ; ++i)
+        {
+            pieDataset.setValue(VoterAndVotesCandidate.get(i).get(0), Integer.parseInt(VoterAndVotesCandidate.get(i).get(1)));
+        }
+        JFreeChart pieChart = ChartFactory.createPieChart("Vote percent by voter", pieDataset, true, false, false);
+        final ChartPanel cPanel = new ChartPanel(pieChart);
+        JDialog a = new JDialog();
+        a.setTitle("Pourcent by vote");
+        a.getContentPane().add(cPanel);
+        a.pack();
+	a.setVisible(true);
+        
+        DefaultPieDataset piedataset = new DefaultPieDataset();
+       
+        ArrayList<ArrayList<String>> VoterAndVotesNumberByCandidat = OfficialDAO.getVoteNumberByStateByCandidate(CandidateDAO.getCandidates().get(jTableCandidates.getSelectedRow()).getEmail());
+        for(int i=0 ; i < VoterAndVotesNumberByCandidat.size() ; ++i)
+        {
+            piedataset.setValue(VoterAndVotesNumberByCandidat.get(i).get(0), Integer.parseInt(VoterAndVotesNumberByCandidat.get(i).get(1)));
+        }
+        JFreeChart pieChartN = ChartFactory.createPieChart("Vote number by voter", piedataset, true, false, false);
+        final ChartPanel cPanel2 = new ChartPanel(pieChartN);
+        JDialog b = new JDialog();
+        b.setTitle("Number by vote");
+        b.getContentPane().add(cPanel2);
+        b.pack();
+	b.setVisible(true);
+    }//GEN-LAST:event_jButtonViewVoteActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Exit;
-    private javax.swing.JLabel Photo;
+    private javax.swing.JButton jButtonViewVote;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
