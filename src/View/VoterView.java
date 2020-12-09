@@ -7,15 +7,7 @@ import static Model.CandidateDAO.getCandidates;
 import Model.VoterDAO;
 import java.awt.Image;
 import java.awt.Toolkit;
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.sql.Blob;
-import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -274,6 +266,12 @@ public class VoterView extends javax.swing.JFrame
 
     private void jButtonValidateCandidateChoiceActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButtonValidateCandidateChoiceActionPerformed
     {//GEN-HEADEREND:event_jButtonValidateCandidateChoiceActionPerformed
+        if(VoterDAO.hasAlreadyVoted(user.getEmail()))
+        {
+            JOptionPane.showMessageDialog(null, "Impossible : you have already voted.");
+        }
+        else
+        {
         if (jTableCandidates.getSelectedRowCount() > 0)
         {
             int retour = JOptionPane.showConfirmDialog(null, "Your choice is definitive. Are you sure ?", "Vote confirmation", JOptionPane.YES_NO_OPTION);
@@ -282,6 +280,7 @@ public class VoterView extends javax.swing.JFrame
                 VoterDAO.castVote(CandidateDAO.getCandidates().get(jTableCandidates.getSelectedRow()).getEmail(), user.getEmail());
 
             }
+        }
         }
     }//GEN-LAST:event_jButtonValidateCandidateChoiceActionPerformed
 

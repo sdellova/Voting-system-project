@@ -8,6 +8,10 @@ import java.util.ArrayList;
 public class OfficialDAO
 {
 
+    public static int getnbVotes()
+            {
+                return 0;
+            }
     public static ArrayList<ArrayList<String>> getVoteNumberByCandidate()
     {
         ArrayList<ArrayList<String>> array = new ArrayList<>();

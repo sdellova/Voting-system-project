@@ -227,6 +227,7 @@ public class ConnectionPageView extends javax.swing.JFrame implements ActionList
                     CP.setVisible(true);
                 }
         }
+        dispose();
     }//GEN-LAST:event_jButtonLoginActionPerformed
 
     private void jButtonCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCloseActionPerformed

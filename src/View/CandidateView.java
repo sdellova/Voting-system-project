@@ -4,6 +4,7 @@ import Controller.Candidate;
 import Controller.User;
 import Model.CandidateDAO;
 import static Model.CandidateDAO.getCandidates;
+import Model.OfficialDAO;
 import Model.UserDAO;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
@@ -17,8 +18,8 @@ public class CandidateView extends javax.swing.JFrame
         this.user = user;
         initComponents();
         addRowToJTableCandidate();
-        jLabelVotesNumberReceived.setText(String.valueOf(UserDAO.getVotesNumberByCandidate(user.getEmail())));
         jPanelProfile.setVisible(false);
+        jLabelnbVotes.setText(Integer.toString(OfficialDAO.getnbVotes()));
     }
 
     public void addRowToJTableCandidate()
@@ -43,7 +44,8 @@ public class CandidateView extends javax.swing.JFrame
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -57,13 +59,12 @@ public class CandidateView extends javax.swing.JFrame
         jLabel5 = new javax.swing.JLabel();
         jLabelFirst_name = new javax.swing.JLabel();
         jLabelPolitical_party = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabelVotesNumber = new javax.swing.JLabel();
         jLabelLast_name = new javax.swing.JLabel();
         jLabelVotesNumberReceived = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         Photo = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        jLabelnbVotes = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -75,8 +76,10 @@ public class CandidateView extends javax.swing.JFrame
         jLabel1.setText("Candidate");
 
         Exit.setText("Exit");
-        Exit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        Exit.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 ExitActionPerformed(evt);
             }
         });
@@ -86,26 +89,33 @@ public class CandidateView extends javax.swing.JFrame
         jLabel2.setText("Candidates profiles :");
 
         jTableCandidates.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+            new Object [][]
+            {
                 {null, null, null},
                 {null, null, null},
                 {null, null, null},
                 {null, null, null}
             },
-            new String [] {
+            new String []
+            {
                 "First name", "Last name", "Political party"
             }
-        ) {
-            boolean[] canEdit = new boolean [] {
+        )
+        {
+            boolean[] canEdit = new boolean []
+            {
                 false, false, false
             };
 
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
+            public boolean isCellEditable(int rowIndex, int columnIndex)
+            {
                 return canEdit [columnIndex];
             }
         });
-        jTableCandidates.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+        jTableCandidates.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
                 jTableCandidatesMouseClicked(evt);
             }
         });
@@ -116,8 +126,6 @@ public class CandidateView extends javax.swing.JFrame
         jLabel4.setText("Last name");
 
         jLabel5.setText("Political party");
-
-        jLabel9.setText("Number of votes");
 
         jLabel7.setText("Number of votes received ");
 
@@ -131,13 +139,9 @@ public class CandidateView extends javax.swing.JFrame
                 .addContainerGap()
                 .addGroup(jPanelProfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelProfileLayout.createSequentialGroup()
-                        .addGroup(jPanelProfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel9)
-                            .addComponent(jLabel7))
+                        .addComponent(jLabel7)
                         .addGap(67, 67, Short.MAX_VALUE)
-                        .addGroup(jPanelProfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabelVotesNumberReceived, javax.swing.GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE)
-                            .addComponent(jLabelVotesNumber, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(jLabelVotesNumberReceived, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanelProfileLayout.createSequentialGroup()
                         .addGroup(jPanelProfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
@@ -169,17 +173,13 @@ public class CandidateView extends javax.swing.JFrame
                 .addGroup(jPanelProfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel5)
                     .addComponent(jLabelPolitical_party, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanelProfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabelVotesNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(57, 57, 57)
                 .addGroup(jPanelProfileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelVotesNumberReceived, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
                 .addGap(18, 18, 18)
                 .addComponent(Photo, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(9, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jLabel6.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
@@ -202,9 +202,11 @@ public class CandidateView extends javax.swing.JFrame
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                         .addComponent(jLabel6)
-                        .addGap(355, 355, 355))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabelnbVotes, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(280, 280, 280))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(53, 53, 53)
                         .addComponent(jPanelProfile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -222,7 +224,8 @@ public class CandidateView extends javax.swing.JFrame
                 .addGap(30, 30, 30)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelnbVotes, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(71, 71, 71)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -263,7 +266,7 @@ public class CandidateView extends javax.swing.JFrame
         jLabelFirst_name.setText(CandidateDAO.getCandidates().get(jTableCandidates.getSelectedRow()).getFirst_name());
         jLabelLast_name.setText(CandidateDAO.getCandidates().get(jTableCandidates.getSelectedRow()).getLast_name());
         jLabelPolitical_party.setText(CandidateDAO.getCandidates().get(jTableCandidates.getSelectedRow()).getPolitical_party());
-        jLabelVotesNumber.setText(String.valueOf(UserDAO.getVotesNumberByCandidate(CandidateDAO.getCandidates().get(jTableCandidates.getSelectedRow()).getEmail())));
+        jLabelVotesNumberReceived.setText(String.valueOf(UserDAO.getVotesNumberByCandidate(user.getEmail())));
     }//GEN-LAST:event_jTableCandidatesMouseClicked
 
 
@@ -277,12 +280,11 @@ public class CandidateView extends javax.swing.JFrame
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabelFirst_name;
     private javax.swing.JLabel jLabelLast_name;
     private javax.swing.JLabel jLabelPolitical_party;
-    private javax.swing.JLabel jLabelVotesNumber;
     private javax.swing.JLabel jLabelVotesNumberReceived;
+    private javax.swing.JLabel jLabelnbVotes;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanelProfile;
     private javax.swing.JScrollPane jScrollPane2;
