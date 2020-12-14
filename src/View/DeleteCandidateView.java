@@ -5,7 +5,10 @@
  */
 package View;
 
+
 import Model.OfficialDAO;
+import Model.UserDAO;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -116,6 +119,14 @@ public class DeleteCandidateView extends javax.swing.JFrame
     private void DeleteActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_DeleteActionPerformed
     {//GEN-HEADEREND:event_DeleteActionPerformed
         OfficialDAO.deleteCandidate(jTextFieldEmail.getText());
+         if (UserDAO.isCorrect(jTextFieldEmail.getText(),"0") == 3 )
+        {
+          JOptionPane.showMessageDialog(null," Email not exist ") ; 
+        }else 
+         {
+             JOptionPane.showMessageDialog(null,"you have deleted a candidate "); 
+         }
+       
     }//GEN-LAST:event_DeleteActionPerformed
 
     private void jButtonReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonReturnActionPerformed

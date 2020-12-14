@@ -1,6 +1,9 @@
 package View;
 
+
 import Model.OfficialDAO;
+import Model.UserDAO;
+import javax.swing.JOptionPane;
 
 public class AddCandidateView extends javax.swing.JFrame
 {
@@ -153,6 +156,17 @@ public class AddCandidateView extends javax.swing.JFrame
     private void jButtonAddActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButtonAddActionPerformed
     {//GEN-HEADEREND:event_jButtonAddActionPerformed
         OfficialDAO.addCandidate(jTextFieldEmail.getText(), jTextFieldPassword.getText(), jTextFieldPolitical_party.getText(), jTextFieldFirst_name.getText(), jTextFieldLast_name.getText());
+        if (jTextFieldEmail.getText()== null && jTextFieldFirst_name.getText() == null && jTextFieldLast_name.getText() == null && jTextFieldPassword.getText()== null && jTextFieldPolitical_party.getText() == null )
+        {
+          JOptionPane.showMessageDialog(null,"error") ; 
+        }
+       if (UserDAO.isCorrect(jTextFieldEmail.getText(),jTextFieldPassword.getText()) != 3)
+        {
+           JOptionPane.showMessageDialog(null,"you have added a candidate") ; 
+        }else
+        {
+          JOptionPane.showMessageDialog(null,"this candidate already exists ")  ;
+        }
     }//GEN-LAST:event_jButtonAddActionPerformed
 
     private void jButtonReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonReturnActionPerformed

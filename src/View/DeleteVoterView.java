@@ -6,6 +6,8 @@
 package View;
 
 import Model.OfficialDAO;
+import Model.UserDAO;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -129,6 +131,14 @@ public class DeleteVoterView extends javax.swing.JFrame
     private void jButtonDeleteActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButtonDeleteActionPerformed
     {//GEN-HEADEREND:event_jButtonDeleteActionPerformed
         OfficialDAO.deleteVoter(jTextFieldEmail.getText());
+          if (UserDAO.isCorrect(jTextFieldEmail.getText(),"0") == 3 )
+        {
+          JOptionPane.showMessageDialog(null," Email not exist ") ; 
+        }else 
+         {
+             JOptionPane.showMessageDialog(null,"you have deleted a voter "); 
+         }
+       
     }//GEN-LAST:event_jButtonDeleteActionPerformed
 
     private void jButtonReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonReturnActionPerformed
