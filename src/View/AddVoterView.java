@@ -6,6 +6,8 @@
 package View;
 
 import Model.OfficialDAO;
+import Model.UserDAO;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -133,21 +135,21 @@ public class AddVoterView extends javax.swing.JFrame
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(6, 6, 6)))
-                .addGap(18, 18, 18)
+                .addGap(12, 12, 12)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
                     .addComponent(jTextFieldFirst_name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(jTextFieldLast_name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(jTextFieldState, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextFieldState, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButtonAdd)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addComponent(jButtonreturn))
         );
 
@@ -168,6 +170,17 @@ public class AddVoterView extends javax.swing.JFrame
     private void jButtonAddActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButtonAddActionPerformed
     {//GEN-HEADEREND:event_jButtonAddActionPerformed
         OfficialDAO.addVoter(jTextFieldEmail.getText(), jTextFieldPassword.getText(), jTextFieldFirst_name.getText(), jTextFieldLast_name.getText(), jTextFieldState.getText());
+        if (jTextFieldEmail.getText()== null && jTextFieldFirst_name.getText() == null && jTextFieldLast_name.getText() == null && jTextFieldPassword.getText()== null && jTextFieldState.getText() == null )
+        {
+          JOptionPane.showMessageDialog(null,"error") ; 
+        }
+        if (UserDAO.isCorrect(jTextFieldEmail.getText(),jTextFieldPassword.getText()) != 3)
+        {
+           JOptionPane.showMessageDialog(null,"you have added a voter") ; 
+        }else
+        {
+          JOptionPane.showMessageDialog(null,"this voter already exists ")  ;
+        }
     }//GEN-LAST:event_jButtonAddActionPerformed
 
     private void jButtonreturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonreturnActionPerformed
