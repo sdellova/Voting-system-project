@@ -21,6 +21,7 @@ public class UserDAO
 
     public static int getVotesNumberByCandidate(String email)
     {
+        int nb = 0;
         try
         {
         Connection connection = Connecting.getDBConnection();
@@ -31,14 +32,14 @@ public class UserDAO
         ResultSet result = statement.executeQuery(str);
         while(result.next())
                 {
-                    System.out.println(result.next());
+                    nb = result.getInt(1);
                 }
         }
         catch(SQLException e)
         {
             System.out.println(e.getMessage());
         }
-        return 0;
+        return nb;
     }
 
     public static int isCorrect(String email, String password)

@@ -88,6 +88,7 @@ public class ConnectionPageView extends javax.swing.JFrame implements ActionList
             }
         });
 
+        showPassword.setBackground(new java.awt.Color(0, 102, 102));
         showPassword.setForeground(new java.awt.Color(255, 255, 255));
         showPassword.setText("Show Password");
         showPassword.addActionListener(new java.awt.event.ActionListener()
@@ -227,7 +228,6 @@ public class ConnectionPageView extends javax.swing.JFrame implements ActionList
                     CP.setVisible(true);
                 }
         }
-        dispose();
     }//GEN-LAST:event_jButtonLoginActionPerformed
 
     private void jButtonCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCloseActionPerformed

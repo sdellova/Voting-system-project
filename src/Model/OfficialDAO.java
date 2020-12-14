@@ -9,9 +9,27 @@ public class OfficialDAO
 {
 
     public static int getnbVotes()
+    {
+        int nb = 0;
+        try
+        {
+            Connection connection = Connecting.getDBConnection();
+            Statement statement = connection.createStatement();
+            String str0 = "SELECT COUNT(*)"
+                    + "FROM voter "
+                    + "WHERE candidate_email IS NOT NULL";
+            ResultSet result = statement.executeQuery(str0);
+            while (result.next())
             {
-                return 0;
+                nb = result.getInt(1);
             }
+        } catch (SQLException e)
+        {
+            System.out.println(e.getMessage());
+        }
+        return nb;
+    }
+
     public static ArrayList<ArrayList<String>> getVoteNumberByCandidate()
     {
         ArrayList<ArrayList<String>> array = new ArrayList<>();
@@ -317,12 +335,14 @@ public class OfficialDAO
         {
             Connection connection = Connecting.getDBConnection();
             Statement statement = connection.createStatement();
-            String insertCandidate = "INSERT INTO user(u_email, u_password, u_first_name, u_last_name)"
+            String insertUser = "INSERT INTO user(u_email, u_password, u_first_name, u_last_name)"
                     + "VALUES"
-                    + "('" + email + "', '" + password + "', '" + first_name + "', '" + last_name + "'); "
-                    + "INSERT INTO candidate(c_email, political_party)"
+                    + "('" + email + "', '" + password + "', '" + first_name + "', '" + last_name + "'); ";
+            String insertCandidate = "INSERT INTO candidate(c_email, political_party)"
                     + "VALUES"
                     + "('" + email + "', '" + political_party + "');";
+            statement.execute(insertUser);
+            statement.close();
             statement.execute(insertCandidate);
         } catch (SQLException e)
         {
@@ -336,10 +356,11 @@ public class OfficialDAO
         {
             Connection connection = Connecting.getDBConnection();
             Statement statement = connection.createStatement();
-            String deleteCandidate = "DELETE FROM user"
-                    + "WHERE u_email = " + email
-                    + " DELETE FROM candidate"
-                    + "WHERE c_email = " + email;
+            String deleteUser = "DELETE FROM user "
+                    + "WHERE u_email = '" + email + "'";
+            String deleteCandidate = "DELETE FROM candidate "
+                    + "WHERE c_email = '" + email + "'";
+            statement.execute(deleteUser);
             statement.execute(deleteCandidate);
         } catch (SQLException e)
         {
@@ -353,12 +374,13 @@ public class OfficialDAO
         {
             Connection connection = Connecting.getDBConnection();
             Statement statement = connection.createStatement();
-            String insertVoter = "INSERT INTO user(u_email, u_password, u_first_name, u_last_name)"
+            String insertUser = "INSERT INTO user(u_email, u_password, u_first_name, u_last_name)"
                     + "VALUES"
-                    + "('" + email + "', '" + password + "', '" + first_name + "', '" + last_name + "');"
-                    + "INSERT INTO voter(v_email, state)"
+                    + "('" + email + "', '" + password + "', '" + first_name + "', '" + last_name + "');";
+            String insertVoter = "INSERT INTO voter(v_email, state)"
                     + "VALUES"
                     + "('" + email + "', '" + state + "');";
+            statement.execute(insertUser);
             statement.execute(insertVoter);
         } catch (SQLException e)
         {
@@ -372,10 +394,11 @@ public class OfficialDAO
         {
             Connection connection = Connecting.getDBConnection();
             Statement statement = connection.createStatement();
-            String deleteVoter = "DELETE FROM user"
-                    + "WHERE u_email = " + email
-                    + "DELETE FROM voter"
-                    + "WHERE v_email = " + email;
+            String deleteUser = "DELETE FROM user "
+                    + "WHERE u_email = '" + email + "'";
+            String deleteVoter = "DELETE FROM voter "
+                    + "WHERE v_email = '" + email + "'";
+            statement.execute(deleteUser);
             statement.execute(deleteVoter);
         } catch (SQLException e)
         {
@@ -388,14 +411,14 @@ public class OfficialDAO
         ArrayList<String> winners = new ArrayList<>();
         ArrayList<ArrayList<String>> votePercentByCandidate = getVotePercentByCandidate();
         float max = 0;
-        for (int i=0; i < votePercentByCandidate.size() ; ++i)
+        for (int i = 0; i < votePercentByCandidate.size(); ++i)
         {
             if (Float.parseFloat(votePercentByCandidate.get(i).get(1)) > max)
             {
                 max = Float.parseFloat(votePercentByCandidate.get(i).get(1));
             }
         }
-        for (int i=0; i < votePercentByCandidate.size() ; ++i)
+        for (int i = 0; i < votePercentByCandidate.size(); ++i)
         {
             if (Float.parseFloat(votePercentByCandidate.get(i).get(1)) >= max)
             {

@@ -3,28 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Seb/Documents/ECE/S5_Java/Voting-system-project/src/View/CandidateProfileView.java</file>
-            <file>file:/C:/Users/Seb/Documents/ECE/S5_Java/Voting-system-project/src/View/AddVoterView.java</file>
-            <file>file:/C:/Users/Seb/Documents/ECE/S5_Java/Voting-system-project/src/View/OfficialProfileView.java</file>
-            <file>file:/C:/Users/Seb/Documents/ECE/S5_Java/Voting-system-project/src/View/DeleteVoterView.java</file>
-            <file>file:/C:/Users/Seb/Documents/ECE/S5_Java/Voting-system-project/src/View/CandidateView.java</file>
-            <file>file:/C:/Users/Seb/Documents/ECE/S5_Java/Voting-system-project/src/Model/OfficialDAO.java</file>
-            <file>file:/C:/Users/Seb/Documents/ECE/S5_Java/Voting-system-project/src/View/VoterView.java</file>
-            <file>file:/C:/Users/Seb/Documents/ECE/S5_Java/Voting-system-project/src/Controller/Candidate.java</file>
-            <file>file:/C:/Users/Seb/Documents/ECE/S5_Java/Voting-system-project/src/View/ConnectionPageView.java</file>
-            <file>file:/C:/Users/Seb/Documents/ECE/S5_Java/Voting-system-project/src/View/ConfirmPortalView.java</file>
-            <file>file:/C:/Users/Seb/Documents/ECE/S5_Java/Voting-system-project/src/Controller/main.java</file>
-            <file>file:/C:/Users/Seb/Documents/ECE/S5_Java/Voting-system-project/src/Model/VoterDAO.java</file>
-            <file>file:/C:/Users/Seb/Documents/ECE/S5_Java/Voting-system-project/src/View/VoterProfileView.java</file>
-            <file>file:/C:/Users/Seb/Documents/ECE/S5_Java/Voting-system-project/src/View/AddCandidateView.java</file>
-            <file>file:/C:/Users/Seb/Documents/ECE/S5_Java/Voting-system-project/src/Model/CandidateDAO.java</file>
-            <file>file:/C:/Users/Seb/Documents/ECE/S5_Java/Voting-system-project/src/Model/Connecting.java</file>
-            <file>file:/C:/Users/Seb/Documents/ECE/S5_Java/Voting-system-project/src/Controller/Voter.java</file>
-            <file>file:/C:/Users/Seb/Documents/ECE/S5_Java/Voting-system-project/src/View/DeleteCandidateView.java</file>
-            <file>file:/C:/Users/Seb/Documents/ECE/S5_Java/Voting-system-project/src/Model/UserDAO.java</file>
-            <file>file:/C:/Users/Seb/Documents/ECE/S5_Java/Voting-system-project/src/View/OfficialView.java</file>
-            <file>file:/C:/Users/Seb/Documents/ECE/S5_Java/Voting-system-project/src/Controller/User.java</file>
-            <file>file:/C:/Users/Seb/Documents/ECE/S5_Java/Voting-system-project/src/Controller/Official.java</file>
+            <file>file:/C:/Users/Seb/Downloads/Voting-system-project-db4b876692acf6260360002fe69cef96a4b0b885/src/View/OfficialView.java</file>
+            <file>file:/C:/Users/Seb/Downloads/Voting-system-project-db4b876692acf6260360002fe69cef96a4b0b885/src/View/CandidateProfileView.java</file>
+            <file>file:/C:/Users/Seb/Downloads/Voting-system-project-db4b876692acf6260360002fe69cef96a4b0b885/src/Controller/Official.java</file>
+            <file>file:/C:/Users/Seb/Downloads/Voting-system-project-db4b876692acf6260360002fe69cef96a4b0b885/src/View/CandidateView.java</file>
+            <file>file:/C:/Users/Seb/Downloads/Voting-system-project-db4b876692acf6260360002fe69cef96a4b0b885/src/Controller/Candidate.java</file>
+            <file>file:/C:/Users/Seb/Downloads/Voting-system-project-db4b876692acf6260360002fe69cef96a4b0b885/src/Controller/main.java</file>
         </group>
     </open-files>
 </project-private>
