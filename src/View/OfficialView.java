@@ -4,12 +4,14 @@ import Controller.Candidate;
 import Controller.Official;
 import Controller.Voter;
 import Model.CandidateDAO;
+import static Model.CandidateDAO.getCandidateByEmail;
 import static Model.CandidateDAO.getCandidates;
 import Model.OfficialDAO;
 import static Model.OfficialDAO.getAbstentionRate;
 import Model.UserDAO;
 import Model.VoterDAO;
 import static Model.VoterDAO.getVoters;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JDialog;
@@ -17,16 +19,20 @@ import javax.swing.table.DefaultTableModel;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
+import org.jfree.chart.labels.StandardPieSectionLabelGenerator;
+import org.jfree.chart.plot.PiePlot;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.data.general.DefaultPieDataset;
 
-public class OfficialView extends javax.swing.JFrame {
+public class OfficialView extends javax.swing.JFrame
+{
 
     /**
      * Creates new form Official
      */
-    public OfficialView() {
+    public OfficialView()
+    {
         initComponents();
         addRowToJTableCandidate();
         addRowToJTableVoter();
@@ -49,7 +55,7 @@ public class OfficialView extends javax.swing.JFrame {
         }
         jTableVoters.setVisible(true);
     }
-    
+
     public void addRowToJTableCandidate()
     {
         DefaultTableModel model = (DefaultTableModel) jTableCandidates.getModel();
@@ -65,6 +71,7 @@ public class OfficialView extends javax.swing.JFrame {
         }
         jTableCandidates.setVisible(true);
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -592,7 +599,7 @@ public class OfficialView extends javax.swing.JFrame {
     private void jButtonWinnerActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButtonWinnerActionPerformed
     {//GEN-HEADEREND:event_jButtonWinnerActionPerformed
         ArrayList<String> winners = OfficialDAO.getWinner();
-        for(int i=0 ; i < winners.size() ; ++i)
+        for (int i = 0; i < winners.size(); ++i)
         {
             JOptionPane.showMessageDialog(null, CandidateDAO.getCandidateByEmail(winners.get(i)).getFirst_name() + " " + CandidateDAO.getCandidateByEmail(winners.get(i)).getLast_name() + " has won the election !");
         }
@@ -618,127 +625,84 @@ public class OfficialView extends javax.swing.JFrame {
 
     private void jButtonViewStatisticsofStateActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButtonViewStatisticsofStateActionPerformed
     {//GEN-HEADEREND:event_jButtonViewStatisticsofStateActionPerformed
-      
+
         DefaultPieDataset pieDataset = new DefaultPieDataset();
-        
-        ArrayList<ArrayList<String>> statesAndVotes = OfficialDAO.getVotePercentByState();
-        for(int i=0 ; i < statesAndVotes.size() ; ++i)
+
+        ArrayList<ArrayList<String>> statesAndVotes = OfficialDAO.getVoteNumberByState();
+        for (int i = 0; i < statesAndVotes.size(); ++i)
         {
             pieDataset.setValue(statesAndVotes.get(i).get(0), Float.parseFloat(statesAndVotes.get(i).get(1)));
         }
-        JFreeChart pieChart = ChartFactory.createPieChart("Vote percent by state", pieDataset, true, false, false);
+        JFreeChart pieChart = ChartFactory.createPieChart("Weight of states in the vote", pieDataset, true, false, false);
+        ((PiePlot) pieChart.getPlot()).setLabelGenerator(new StandardPieSectionLabelGenerator(
+                "{0}: {1} ({2})", new DecimalFormat("0"), new DecimalFormat("0%")));
         final ChartPanel cPanel = new ChartPanel(pieChart);
         JDialog a = new JDialog();
-        a.setTitle("Pourcent by state");
+        a.setTitle("weight of states in the vote");
         a.getContentPane().add(cPanel);
         a.pack();
-	a.setVisible(true);
-        
-        DefaultPieDataset piedataset = new DefaultPieDataset();
-        
-        ArrayList<ArrayList<String>> statesAndVotesNumber = OfficialDAO.getVoteNumberByState();
-        for(int i=0 ; i < statesAndVotesNumber.size() ; ++i)
-        {
-            piedataset.setValue(statesAndVotesNumber.get(i).get(0), Float.parseFloat(statesAndVotesNumber.get(i).get(1)));
-        }
-        JFreeChart pieChartN = ChartFactory.createPieChart("Vote number by state", piedataset, true, false, false);
-        final ChartPanel cPanel2 = new ChartPanel(pieChartN);
-        JDialog b = new JDialog();
-        b.setTitle("Number by state");
-        b.getContentPane().add(cPanel2);
-        b.pack();
-	b.setVisible(true);
-    
+        a.setVisible(true);
     }//GEN-LAST:event_jButtonViewStatisticsofStateActionPerformed
 
     private void jButtonStatisticgeneralActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonStatisticgeneralActionPerformed
-        
-        DefaultPieDataset pieDataset = new DefaultPieDataset();
-       
-        ArrayList<ArrayList<String>> VoterAndVotes = OfficialDAO.getVotePercentByCandidate();
-        for(int i=0 ; i < VoterAndVotes.size() ; ++i)
-        {
-            pieDataset.setValue(VoterAndVotes.get(i).get(0), Float.parseFloat(VoterAndVotes.get(i).get(1)));
-        }
-        JFreeChart pieChart = ChartFactory.createPieChart("Vote percent by voter", pieDataset, true, false, false);
-        final ChartPanel cPanel = new ChartPanel(pieChart);
-        JDialog a = new JDialog();
-        a.setTitle("Pourcent by vote");
-        a.getContentPane().add(cPanel);
-        a.pack();
-	a.setVisible(true);
-        
+
         DefaultPieDataset piedataset = new DefaultPieDataset();
-       
+
         ArrayList<ArrayList<String>> VoterAndVotesNumber = OfficialDAO.getVoteNumberByCandidate();
-        for(int i=0 ; i < VoterAndVotesNumber.size() ; ++i)
+
+        for (int i = 0; i < VoterAndVotesNumber.size(); ++i)
         {
-            piedataset.setValue(VoterAndVotesNumber.get(i).get(0), Float.parseFloat(VoterAndVotesNumber.get(i).get(1)));
+            Candidate cand = getCandidateByEmail(VoterAndVotesNumber.get(i).get(0));
+            piedataset.setValue(cand.getFirst_name() + " " + cand.getLast_name(), Float.parseFloat(VoterAndVotesNumber.get(i).get(1)));
         }
-        JFreeChart pieChartN = ChartFactory.createPieChart("Vote number by voter", piedataset, true, false, false);
+        JFreeChart pieChartN = ChartFactory.createPieChart("Votes proportions by candidate", piedataset, true, false, false);
+        ((PiePlot) pieChartN.getPlot()).setLabelGenerator(new StandardPieSectionLabelGenerator(
+                "{0}: {1} ({2})", new DecimalFormat("0"), new DecimalFormat("0%")));
         final ChartPanel cPanel2 = new ChartPanel(pieChartN);
         JDialog b = new JDialog();
-        b.setTitle("Number by vote");
+        b.setTitle("Votes proportions by candidate");
         b.getContentPane().add(cPanel2);
         b.pack();
-	b.setVisible(true);
-        
+        b.setVisible(true);
+
     }//GEN-LAST:event_jButtonStatisticgeneralActionPerformed
 
     private void jButtonabstentionrateGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonabstentionrateGActionPerformed
-        JOptionPane.showMessageDialog(null, "Abstention rate :"+ getAbstentionRate());
+        JOptionPane.showMessageDialog(null, "Abstention rate : " + getAbstentionRate());
     }//GEN-LAST:event_jButtonabstentionrateGActionPerformed
 
     private void jButtonAbstentionrateSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAbstentionrateSActionPerformed
         DefaultCategoryDataset barDataset = new DefaultCategoryDataset();
-        
         ArrayList<ArrayList<String>> statesAndVotesAbstention = OfficialDAO.getAbstentionRateByState();
-        for(int i=0 ; i < statesAndVotesAbstention.size() ; ++i)
+        for (int i = 0; i < statesAndVotesAbstention.size(); ++i)
         {
-            barDataset.setValue(Float.parseFloat(statesAndVotesAbstention.get(i).get(1)), statesAndVotesAbstention.get(i).get(0),new Integer(i));
+            barDataset.setValue(Integer.parseInt(statesAndVotesAbstention.get(i).get(1)), statesAndVotesAbstention.get(i).get(0), new Integer(i));
         }
-        JFreeChart barChart = ChartFactory.createBarChart("Abstention percent by state", "states","abstention rate" , barDataset , PlotOrientation.VERTICAL,  true, true, false);
+        JFreeChart barChart = ChartFactory.createBarChart("Abstention rate by state", "states", "abstention rate", barDataset, PlotOrientation.VERTICAL, true, true, false);
         final ChartPanel cPanel = new ChartPanel(barChart);
         JDialog a = new JDialog();
-        a.setTitle("Abstention Pourcent by state");
+        a.setTitle("Abstention rate by state");
         a.getContentPane().add(cPanel);
         a.pack();
-	a.setVisible(true);
-         
-        
+        a.setVisible(true);
     }//GEN-LAST:event_jButtonAbstentionrateSActionPerformed
 
     private void jButtonViewStatesCandidatesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonViewStatesCandidatesActionPerformed
-       DefaultPieDataset pieDataset = new DefaultPieDataset();
-       
-        ArrayList<ArrayList<String>> VoterAndVotesCandidate = OfficialDAO.getVotePercentByStateByCandidate(CandidateDAO.getCandidates().get(jTableCandidates.getSelectedRow()).getEmail());
-        for(int i=0 ; i < VoterAndVotesCandidate.size() ; ++i)
-        {
-            pieDataset.setValue(VoterAndVotesCandidate.get(i).get(0), Float.parseFloat(VoterAndVotesCandidate.get(i).get(1)));
-        }
-        JFreeChart pieChart = ChartFactory.createPieChart("Vote percent by voter", pieDataset, true, false, false);
-        final ChartPanel cPanel = new ChartPanel(pieChart);
-        JDialog a = new JDialog();
-        a.setTitle("Pourcent by vote");
-        a.getContentPane().add(cPanel);
-        a.pack();
-	a.setVisible(true);
-        
         DefaultPieDataset piedataset = new DefaultPieDataset();
-       
         ArrayList<ArrayList<String>> VoterAndVotesNumberByCandidat = OfficialDAO.getVoteNumberByStateByCandidate(CandidateDAO.getCandidates().get(jTableCandidates.getSelectedRow()).getEmail());
-        for(int i=0 ; i < VoterAndVotesNumberByCandidat.size() ; ++i)
+        for (int i = 0; i < VoterAndVotesNumberByCandidat.size(); ++i)
         {
             piedataset.setValue(VoterAndVotesNumberByCandidat.get(i).get(0), Float.parseFloat(VoterAndVotesNumberByCandidat.get(i).get(1)));
         }
-        JFreeChart pieChartN = ChartFactory.createPieChart("Vote number by voter", piedataset, true, false, false);
+        JFreeChart pieChartN = ChartFactory.createPieChart("States proportions by candidate", piedataset, true, false, false);
+        ((PiePlot) pieChartN.getPlot()).setLabelGenerator(new StandardPieSectionLabelGenerator(
+                "{0}: {1} ({2})", new DecimalFormat("0"), new DecimalFormat("0%")));
         final ChartPanel cPanel2 = new ChartPanel(pieChartN);
         JDialog b = new JDialog();
-        b.setTitle("Number by vote");
+        b.setTitle("States proportions by candidate");
         b.getContentPane().add(cPanel2);
         b.pack();
-	b.setVisible(true);
-        
+        b.setVisible(true);
     }//GEN-LAST:event_jButtonViewStatesCandidatesActionPerformed
 
 

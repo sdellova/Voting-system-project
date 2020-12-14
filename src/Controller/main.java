@@ -1,6 +1,7 @@
 package Controller;
 
 import Model.Connecting;
+import Model.OfficialDAO;
 import Model.UserDAO;
 import Model.VoterDAO;
 import View.ConnectionPageView;

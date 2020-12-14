@@ -1,6 +1,8 @@
 package View;
 
 import Controller.Candidate;
+import Controller.Official;
+import Controller.Official.VotingState;
 import Controller.User;
 import Model.CandidateDAO;
 import static Model.CandidateDAO.getCandidates;
@@ -266,21 +268,30 @@ public class VoterView extends javax.swing.JFrame
 
     private void jButtonValidateCandidateChoiceActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButtonValidateCandidateChoiceActionPerformed
     {//GEN-HEADEREND:event_jButtonValidateCandidateChoiceActionPerformed
-        if(VoterDAO.hasAlreadyVoted(user.getEmail()))
+        if (Official.getVotingState() == VotingState.OPEN)
         {
-            JOptionPane.showMessageDialog(null, "Impossible : you have already voted.");
+            if (VoterDAO.hasAlreadyVoted(user.getEmail()))
+            {
+                JOptionPane.showMessageDialog(null, "Impossible : you have already voted.");
+            } else
+            {
+                if (jTableCandidates.getSelectedRowCount() > 0)
+                {
+                    int retour = JOptionPane.showConfirmDialog(null, "Your choice is definitive. Are you sure ?", "Vote confirmation", JOptionPane.YES_NO_OPTION);
+                    if (retour == 0)
+                    {
+                        VoterDAO.castVote(CandidateDAO.getCandidates().get(jTableCandidates.getSelectedRow()).getEmail(), user.getEmail());
+                    }
+                }
+            }
+        }
+        else if(Official.getVotingState() == VotingState.PAUSED)
+        {
+            JOptionPane.showMessageDialog(null, "The vote is paused.");
         }
         else
         {
-        if (jTableCandidates.getSelectedRowCount() > 0)
-        {
-            int retour = JOptionPane.showConfirmDialog(null, "Your choice is definitive. Are you sure ?", "Vote confirmation", JOptionPane.YES_NO_OPTION);
-            if (retour == 0)
-            {
-                VoterDAO.castVote(CandidateDAO.getCandidates().get(jTableCandidates.getSelectedRow()).getEmail(), user.getEmail());
-
-            }
-        }
+            JOptionPane.showMessageDialog(null, "The vote is closed. You can no longer vote.");
         }
     }//GEN-LAST:event_jButtonValidateCandidateChoiceActionPerformed
 

@@ -3,6 +3,7 @@ package View;
 import Controller.Candidate;
 import Controller.User;
 import Model.CandidateDAO;
+import static Model.CandidateDAO.getCandidateByEmail;
 import static Model.CandidateDAO.getCandidates;
 import Model.OfficialDAO;
 import Model.UserDAO;
@@ -13,7 +14,6 @@ import javax.swing.table.DefaultTableModel;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
-import org.jfree.chart.labels.PieSectionLabelGenerator;
 import org.jfree.chart.labels.StandardPieSectionLabelGenerator;
 import org.jfree.chart.plot.PiePlot;
 import org.jfree.data.general.DefaultPieDataset;
@@ -29,6 +29,7 @@ public class CandidateView extends javax.swing.JFrame
         initComponents();
         addRowToJTableCandidate();
         jPanelProfile.setVisible(false);
+        jButtonViewScores.setVisible(false);
         jLabelnbVotes.setText(Integer.toString(OfficialDAO.getnbVotes()));
     }
 
@@ -77,6 +78,7 @@ public class CandidateView extends javax.swing.JFrame
         jLabel6 = new javax.swing.JLabel();
         jLabelnbVotes = new javax.swing.JLabel();
         jButtonViewVotes = new javax.swing.JButton();
+        jButtonViewScores = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -200,12 +202,21 @@ public class CandidateView extends javax.swing.JFrame
 
         jLabelnbVotes.setForeground(new java.awt.Color(255, 255, 255));
 
-        jButtonViewVotes.setText("View votes");
+        jButtonViewVotes.setText("View scores by state");
         jButtonViewVotes.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
                 jButtonViewVotesActionPerformed(evt);
+            }
+        });
+
+        jButtonViewScores.setText("View scores");
+        jButtonViewScores.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                jButtonViewScoresActionPerformed(evt);
             }
         });
 
@@ -224,19 +235,22 @@ public class CandidateView extends javax.swing.JFrame
                         .addGap(80, 80, 80)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(157, 157, 157)
+                        .addComponent(jButtonViewScores, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonViewVotes, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(53, 53, 53)
-                        .addComponent(jPanelProfile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButtonViewVotes, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabelnbVotes, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(280, 280, 280)))))
-                .addContainerGap())
+                                .addGap(40, 40, 40)
+                                .addComponent(jLabel6)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabelnbVotes, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(53, 53, 53)
+                                .addComponent(jPanelProfile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap())))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(276, 276, 276)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -254,7 +268,9 @@ public class CandidateView extends javax.swing.JFrame
                         .addComponent(jLabel6)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(15, 15, 15)
-                .addComponent(jButtonViewVotes, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonViewVotes, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonViewScores))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -292,6 +308,7 @@ public class CandidateView extends javax.swing.JFrame
     private void jTableCandidatesMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_jTableCandidatesMouseClicked
     {//GEN-HEADEREND:event_jTableCandidatesMouseClicked
         jPanelProfile.setVisible(true);
+        jButtonViewScores.setVisible(true);
         jLabelFirst_name.setText(CandidateDAO.getCandidates().get(jTableCandidates.getSelectedRow()).getFirst_name());
         jLabelLast_name.setText(CandidateDAO.getCandidates().get(jTableCandidates.getSelectedRow()).getLast_name());
         jLabelPolitical_party.setText(CandidateDAO.getCandidates().get(jTableCandidates.getSelectedRow()).getPolitical_party());
@@ -300,24 +317,6 @@ public class CandidateView extends javax.swing.JFrame
 
     private void jButtonViewVotesActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButtonViewVotesActionPerformed
     {//GEN-HEADEREND:event_jButtonViewVotesActionPerformed
-        
-        DefaultPieDataset pieDataset = new DefaultPieDataset();
-
-        ArrayList<ArrayList<String>> VoterAndVotesCandidate = OfficialDAO.getVotePercentByStateByCandidate(CandidateDAO.getCandidates().get(jTableCandidates.getSelectedRow()).getEmail());
-        for (int i = 0; i < VoterAndVotesCandidate.size(); ++i)
-        {
-            pieDataset.setValue(VoterAndVotesCandidate.get(i).get(0), Float.parseFloat(VoterAndVotesCandidate.get(i).get(1)));
-        }
-        JFreeChart pieChart = ChartFactory.createPieChart("Vote percent by voter", pieDataset, true, false, false);
-        ((PiePlot) pieChart.getPlot()).setLabelGenerator(new StandardPieSectionLabelGenerator(
-        "{0} : ({2})", new DecimalFormat("0"), new DecimalFormat("0%")));
-        final ChartPanel cPanel = new ChartPanel(pieChart);
-        JDialog a = new JDialog();
-        a.setTitle("Pourcent by vote");
-        a.getContentPane().add(cPanel);
-        a.pack();
-        a.setVisible(true);
-
         DefaultPieDataset piedataset = new DefaultPieDataset();
 
         ArrayList<ArrayList<String>> VoterAndVotesNumberByCandidat = OfficialDAO.getVoteNumberByStateByCandidate(CandidateDAO.getCandidates().get(jTableCandidates.getSelectedRow()).getEmail());
@@ -325,20 +324,43 @@ public class CandidateView extends javax.swing.JFrame
         {
             piedataset.setValue(VoterAndVotesNumberByCandidat.get(i).get(0), Float.parseFloat(VoterAndVotesNumberByCandidat.get(i).get(1)));
         }
-        JFreeChart pieChartN = ChartFactory.createPieChart("Vote number by voter", piedataset, true, false, false);
-         ((PiePlot) pieChartN.getPlot()).setLabelGenerator(new StandardPieSectionLabelGenerator(
-        "{0} : ({2})", new DecimalFormat("0"), new DecimalFormat("0%")));
+        JFreeChart pieChartN = ChartFactory.createPieChart("States proportions by candidate", piedataset, true, false, false);
+        ((PiePlot) pieChartN.getPlot()).setLabelGenerator(new StandardPieSectionLabelGenerator(
+                "{0}: {1} ({2})", new DecimalFormat("0"), new DecimalFormat("0%")));
         final ChartPanel cPanel2 = new ChartPanel(pieChartN);
         JDialog b = new JDialog();
-        b.setTitle("Number by vote");
+        b.setTitle("States proportions by candidate");
         b.getContentPane().add(cPanel2);
         b.pack();
         b.setVisible(true);
     }//GEN-LAST:event_jButtonViewVotesActionPerformed
 
+    private void jButtonViewScoresActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButtonViewScoresActionPerformed
+    {//GEN-HEADEREND:event_jButtonViewScoresActionPerformed
+        DefaultPieDataset piedataset = new DefaultPieDataset();
+       
+        ArrayList<ArrayList<String>> VoterAndVotesNumber = OfficialDAO.getVoteNumberByCandidate();
+        
+        for(int i=0 ; i < VoterAndVotesNumber.size() ; ++i)
+        {
+            Candidate cand = getCandidateByEmail(VoterAndVotesNumber.get(i).get(0));
+            piedataset.setValue(cand.getFirst_name() + " " + cand.getLast_name(), Float.parseFloat(VoterAndVotesNumber.get(i).get(1)));
+        }
+        JFreeChart pieChartN = ChartFactory.createPieChart("Votes proportions by candidate", piedataset, true, false, false);
+        ((PiePlot) pieChartN.getPlot()).setLabelGenerator(new StandardPieSectionLabelGenerator(
+                "{0}: {1} ({2})", new DecimalFormat("0"), new DecimalFormat("0%")));
+        final ChartPanel cPanel2 = new ChartPanel(pieChartN);
+        JDialog b = new JDialog();
+        b.setTitle("Votes proportions by candidate");
+        b.getContentPane().add(cPanel2);
+        b.pack();
+	b.setVisible(true);
+    }//GEN-LAST:event_jButtonViewScoresActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Exit;
     private javax.swing.JLabel Photo;
+    private javax.swing.JButton jButtonViewScores;
     private javax.swing.JButton jButtonViewVotes;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

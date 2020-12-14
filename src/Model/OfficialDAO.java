@@ -55,41 +55,6 @@ public class OfficialDAO
         return array;
     }
 
-    public static ArrayList<ArrayList<String>> getVotePercentByCandidate()
-    {
-        ArrayList<ArrayList<String>> array = new ArrayList<>();
-        float nbVoters = 0;
-        try
-        {
-            Connection connection = Connecting.getDBConnection();
-            Statement statement = connection.createStatement();
-            String str0 = "SELECT COUNT(*)"
-                    + "from voter "
-                    + "WHERE candidate_email IS NOT NULL";
-            String str1 = "SELECT candidate_email, COUNT(*)"
-                    + "FROM voter "
-                    + "WHERE candidate_email IS NOT NULL GROUP BY candidate_email";
-            ResultSet result0 = statement.executeQuery(str0);
-            while (result0.next())
-            {
-                nbVoters = result0.getFloat(1);
-            }
-            result0.close();
-            ResultSet result1 = statement.executeQuery(str1);
-            while (result1.next())
-            {
-                ArrayList<String> arr = new ArrayList<>();
-                arr.add(result1.getString("candidate_email"));
-                arr.add(Float.toString(result1.getFloat("COUNT(*)") / nbVoters * 100));
-                array.add(arr);
-            }
-        } catch (SQLException e)
-        {
-            System.out.println(e.getMessage());
-        }
-        return array;
-    }
-
     public static ArrayList<Voter> getVoterByCandidates(String email)
     {
         ArrayList<Voter> votersList = new ArrayList<>();
@@ -165,9 +130,8 @@ public class OfficialDAO
 
     public static ArrayList<ArrayList<String>> getAbstentionRateByState()
     {
-        ArrayList<Float> a = new ArrayList<>();
-        ArrayList<Float> b = new ArrayList<>();
         ArrayList<ArrayList<String>> array = new ArrayList<>();
+        ArrayList<ArrayList<String>> a = new ArrayList<>();
         try
         {
             Connection connection = Connecting.getDBConnection();
@@ -175,30 +139,45 @@ public class OfficialDAO
             String str1 = "SELECT state, COUNT(*) "
                     + "FROM voter "
                     + "WHERE candidate_email IS NULL GROUP BY state";
-            String str2 = "SELECT COUNT(*) "
+            String str2 = "SELECT state, COUNT(*) "
                     + "FROM voter GROUP BY STATE";
             ResultSet result1 = statement.executeQuery(str1);
             while (result1.next())
             {
                 ArrayList<String> arr = new ArrayList<>();
                 arr.add(result1.getString("state"));
+                System.out.println(result1.getString("state"));
                 arr.add(result1.getString("COUNT(*)"));
+                System.out.println(result1.getString("COUNT(*)"));
                 array.add(arr);
             }
             result1.close();
             statement.executeQuery(str2);
             ResultSet result2 = statement.executeQuery(str2);
-            int i = 0;
             while (result2.next())
             {
-                array.get(i).set(1, Float.toString(Float.parseFloat(array.get(i).get(1)) / result2.getFloat(1) * 100));
-                ++i;
+                ArrayList<String> arr = new ArrayList<>();
+                arr.add(result2.getString("state"));
+                System.out.println(result2.getString("state"));
+                arr.add(result2.getString("COUNT(*)"));
+                System.out.println(result2.getString("COUNT(*)"));
+                a.add(arr);
             }
+            for(int i=0 ; i<array.size() ; ++i)
+            {
+                for(int j=0 ; j<a.size() ; ++j)
+                {
+                    if(array.get(i).get(0) == a.get(j).get(0))
+                    {
+                        array.get(i).set(1,String.valueOf(Float.parseFloat(array.get(i).get(1)) / Float.parseFloat(a.get(j).get(1)) * 100));
+                    }
+                }
+            }
+
         } catch (SQLException e)
         {
             System.out.println(e.getMessage());
         }
-
         return array;
     }
 
@@ -228,42 +207,6 @@ public class OfficialDAO
         return array;
     }
 
-    public static ArrayList<ArrayList<String>> getVotePercentByState()
-    {
-        ArrayList<ArrayList<String>> array = new ArrayList<>();
-        try
-        {
-            Connection connection = Connecting.getDBConnection();
-            Statement statement = connection.createStatement();
-            float nbVoters = 0;
-            String str0 = "SELECT COUNT(*)"
-                    + "FROM voter "
-                    + "WHERE candidate_email IS NOT NULL";
-            String str1 = "SELECT state, COUNT(*) "
-                    + "FROM voter "
-                    + "WHERE candidate_email IS NOT NULL GROUP BY state";
-            ResultSet result0 = statement.executeQuery(str0);
-            while (result0.next())
-            {
-                nbVoters = result0.getFloat(1);
-            }
-            result0.close();
-            ResultSet result1 = statement.executeQuery(str1);
-            while (result1.next())
-            {
-                ArrayList<String> arr = new ArrayList<>();
-                arr.add(result1.getString("state"));
-                arr.add(Float.toString(result1.getFloat("COUNT(*)") / nbVoters * 100));
-                array.add(arr);
-            }
-            result1.close();
-        } catch (SQLException e)
-        {
-            System.out.println(e.getMessage());
-        }
-        return array;
-    }
-
     public static ArrayList<ArrayList<String>> getVoteNumberByStateByCandidate(String email)
     {
         ArrayList<ArrayList<String>> array = new ArrayList<>();
@@ -281,45 +224,6 @@ public class OfficialDAO
                 arr.add(result1.getString("state"));
                 arr.add(result1.getString("COUNT(*)"));
                 array.add(arr);
-            }
-            result1.close();
-        } catch (SQLException e)
-        {
-            System.out.println(e.getMessage());
-        }
-        return array;
-    }
-
-    public static ArrayList<ArrayList<String>> getVotePercentByStateByCandidate(String email)
-    {
-
-        ArrayList<ArrayList<String>> array = new ArrayList<>();
-        try
-        {
-            Connection connection = Connecting.getDBConnection();
-            Statement statement = connection.createStatement();
-            ArrayList<Float> nbVotersByState = new ArrayList<>();
-            String str0 = "SELECT COUNT(*)"
-                    + "FROM voter "
-                    + "WHERE candidate_email IS NOT NULL GROUP BY state";
-            String str1 = "SELECT state, COUNT(*) "
-                    + "FROM voter "
-                    + "WHERE candidate_email = '" + email + "' GROUP BY state";
-            ResultSet result0 = statement.executeQuery(str0);
-            while (result0.next())
-            {
-                nbVotersByState.add(result0.getFloat(1));
-            }
-            result0.close();
-            ResultSet result1 = statement.executeQuery(str1);
-            int i = 0;
-            while (result1.next())
-            {
-                ArrayList<String> arr = new ArrayList<>();
-                arr.add(result1.getString("state"));
-                arr.add(Float.toString(result1.getFloat("COUNT(*)") / nbVotersByState.get(i) * 100));
-                array.add(arr);
-                ++i;
             }
             result1.close();
         } catch (SQLException e)
@@ -409,20 +313,20 @@ public class OfficialDAO
     public static ArrayList<String> getWinner() // à refaire
     {
         ArrayList<String> winners = new ArrayList<>();
-        ArrayList<ArrayList<String>> votePercentByCandidate = getVotePercentByCandidate();
+        ArrayList<ArrayList<String>> voteNumberByCandidate = getVoteNumberByCandidate();
         float max = 0;
-        for (int i = 0; i < votePercentByCandidate.size(); ++i)
+        for (int i = 0; i < voteNumberByCandidate.size(); ++i)
         {
-            if (Float.parseFloat(votePercentByCandidate.get(i).get(1)) > max)
+            if (Float.parseFloat(voteNumberByCandidate.get(i).get(1)) > max)
             {
-                max = Float.parseFloat(votePercentByCandidate.get(i).get(1));
+                max = Float.parseFloat(voteNumberByCandidate.get(i).get(1));
             }
         }
-        for (int i = 0; i < votePercentByCandidate.size(); ++i)
+        for (int i = 0; i < voteNumberByCandidate.size(); ++i)
         {
-            if (Float.parseFloat(votePercentByCandidate.get(i).get(1)) >= max)
+            if (Float.parseFloat(voteNumberByCandidate.get(i).get(1)) >= max)
             {
-                winners.add(votePercentByCandidate.get(i).get(0));
+                winners.add(voteNumberByCandidate.get(i).get(0));
             }
         }
         return winners;
