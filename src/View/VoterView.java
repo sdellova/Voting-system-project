@@ -68,6 +68,8 @@ public class VoterView extends javax.swing.JFrame
         jLabelPolitical_party = new javax.swing.JLabel();
         jLabelPhoto = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        jLabelVotingState = new javax.swing.JLabel();
+        jLabelVStates = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -179,15 +181,29 @@ public class VoterView extends javax.swing.JFrame
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Candidates :");
 
+        jLabelVotingState.setFont(new java.awt.Font("Lucida Grande", 0, 14)); // NOI18N
+        jLabelVotingState.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelVotingState.setText("Voting state:");
+
+        jLabelVStates.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelVStates.setText("jLabel7");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(42, 42, 42)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(42, 42, 42)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabelVotingState)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabelVStates)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(171, 171, 171)
@@ -214,7 +230,11 @@ public class VoterView extends javax.swing.JFrame
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(19, 19, 19)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabelVotingState)
+                        .addComponent(jLabelVStates)))
                 .addGap(19, 19, 19)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -297,6 +317,8 @@ public class VoterView extends javax.swing.JFrame
     private javax.swing.JLabel jLabelLast_name;
     private javax.swing.JLabel jLabelPhoto;
     private javax.swing.JLabel jLabelPolitical_party;
+    private javax.swing.JLabel jLabelVStates;
+    private javax.swing.JLabel jLabelVotingState;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanelProfile;
     private javax.swing.JScrollPane jScrollPane2;
